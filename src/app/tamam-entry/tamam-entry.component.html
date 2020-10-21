@@ -1,0 +1,22 @@
+<div class = "container">
+<br> <br>
+
+<div class="form-group col-xs-2">
+    <label for="date">Date:</label>
+    <input #Date type='date' placeholder='dd/mm/yyyy' name='form[datetime]' class = "form-control" id='datetime' value = "" required/>
+    <label for="id">Student ID:</label>
+    <input #ID (keyup.enter) = 'getStudentInfo(ID.value , Date.value)' type="number" class="form-control" id="pwd" required/>
+</div>
+
+</div>
+
+<app-tamam-entry-dialouge ></app-tamam-entry-dialouge>
+
+<br><br>
+<div align = "center">
+    <button class = "btn btn-success" style = "width: 100px;">Add</button>
+</div>
+
+<hr>
+<app-student-list></app-student-list>
+

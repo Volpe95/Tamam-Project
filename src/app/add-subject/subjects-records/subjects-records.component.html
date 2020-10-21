@@ -1,0 +1,29 @@
+<h2>Responsive Table</h2>
+<div class="table-wrapper">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>ٍSubject Code</th>
+            <th>Subject Name</th>
+            <th>Lecture hours</th>
+            <th>Section hours</th>
+            <th>Lab hours</th>
+            <th>Total Subject hours</th>
+            <th>Delete?</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor = "let subject of Subjects; index as i">
+                <td>{{i + 1}}</td>
+                <td>{{subject.subjectCode}}</td>
+                <td>{{subject.subjectName}}</td>
+                <td>{{subject.lectureHours}}</td>
+                <td>{{subject.sectionHours}}</td>
+                <td>{{subject.labHours}}</td>
+                <td>{{subject.totalSubjectHours}}</td>
+                <td><button class = "btn btn-danger">Delete</button></td>
+            </tr>
+        <tbody>
+    </table>
+</div>

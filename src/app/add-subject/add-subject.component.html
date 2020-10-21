@@ -1,0 +1,52 @@
+<div class = "container">
+    <br>
+    <form  (ngSubmit) = "onSubmit()" #addSubjectForm = "ngForm">
+        
+        <div class="form-row">
+            <div class = "row">
+                <div class = "col col-xs-12">
+                    <div class = "col col-xs-6">
+                        <label>Subject Name</label>
+                        <input ngModel required  name = "subjectName" class = "form-control" type = "text"/>
+                    </div>
+                    <div class = "col col-xs-4">
+                        <label>Subject Code</label>
+                        <input   ngModel required name = "subjectCode" class = "form-control" type = "text" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class = "form-row">
+            <div class = "col col-xs-3">
+                <label>Total subject hours</label>
+                <input   ngModel required name = "totSubjectHours" type = "number" min = "0" value = "0" class = "form-control" />
+            </div>
+            <div class = "col col-xs-3">
+                <label>Lecture Hours</label>
+                <input  ngModel required name = "lectureHours" type = "number" min = "0" value = "0" class = "form-control" />
+            </div>
+            <div class = "col col-xs-3">
+                <label>Section hours</label>
+                <input   ngModel required name = "sectionHours" type = "number" min = "0" value = "0"  class = "form-control" />
+            </div>
+            <div class = "col col-xs-3">
+                <label>Lab hours</label>
+                <input  ngModel required  name = "labHours" type = "number" min = "0" value = "0" class = "form-control" />
+            </div>
+        </div>
+        
+        <br><br>
+        <br><br>
+    
+        <div  class = "row" align = "right">
+            <div class = "col col-xs-12">
+                <button type = "submit" class = "btn btn-success">Add Subject</button>  
+            </div>
+        </div>
+    
+    </form>
+    
+    <hr>
+    <app-subjects-records></app-subjects-records>
+</div>

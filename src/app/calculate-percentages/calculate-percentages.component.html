@@ -1,0 +1,37 @@
+<div class = "container">
+    <form (ngSubmit) = "onSubmit()" #PercentageForm = "ngForm">
+        <div class = "form-row">
+            <div class = "row">
+
+                <div class = "col col-xs-12">
+
+                    <div class = "col col-xs-2">
+                        <label>Year</label>
+                        <select class = "form-control" required ngModel name = "year">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+
+                    <div class = "col col-xs-2">
+                        <label>Percentage</label>
+                        <input type = "number" required name = "percentage" ngModel class = "form-control" min="0" max="100" value = "0">
+
+
+                    </div>
+                    <br>
+                    <div class = "col col-xs-4" align = "right">
+                        <button type = "submit"  class = "btn btn-primary">Calculate!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br>
+    <hr>
+
+    <app-percentage-records></app-percentage-records>
+</div>

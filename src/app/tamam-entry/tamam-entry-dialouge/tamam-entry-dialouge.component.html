@@ -1,5 +1,15 @@
-<p>Click the names to see more data.</p>
-<table>
+<div class = "container">
+  <br> <br>
+
+  <div class="form-group col-xs-2">
+      <label for="date">Date:</label>
+      <input (change) = "dateChanged(Date.value)" #Date type='date' placeholder='dd/mm/yyyy' name='form[datetime]' class = "form-control" id='datetime' value = "" required/>
+      <label for="id">Student ID:</label>
+      <input #ID (change) = 'getStudentInfo(ID.value)' type="number" class="form-control" id="pwd" required/>
+  </div>
+
+  </div>
+  <table>
 	<thead>
 	<tr class="table-headers">
     <th>Name</th>
@@ -11,7 +21,7 @@
     <th>5th Lecture:   <br>Whatever</th>
 	</tr>
 	</thead>
-	<tbody>
+	<tbody #Tamams>
     <tr>
         <th class="mobile-header">Name</th>
             <td>
@@ -19,23 +29,38 @@
             </td>
         <th class="mobile-header">Class</th>
         <td>{{StudentInfo.year}} {{StudentInfo.class}}</td>
-        <th class="mobile-header">Year</th>
         <td>
+
             <div name = "first-lecture" >
-                <button class = "btn btn-default">ع</button>
+                <button #firstLecture1 (click) = "onClickTamam(firstLecture1)" name = "عياده" value = "1" class = "btn btn-default">ع</button>
                 &nbsp;
-                <button class = "btn btn-default">ز</button>
+                <button #firstLecture2 (click) = "onClickTamam(firstLecture2)" name = "زنزانه" value = "1" class = "btn btn-default">ز</button>
                 &nbsp;
-                <button class = "btn btn-default">ل</button>
+                <button #firstLecture3 (click) = "onClickTamam(firstLecture3)" name = "تخلف" value = "1" class = "btn btn-default">ل</button>
                 <br>
-                <button class = "btn btn-default">أ</button>
+                <button #firstLecture4 (click) = "onClickTamam(firstLecture4)" name = "أجازه" value = "1" class = "btn btn-default">أ</button>
                 &nbsp;
-                <button class = "btn btn-default">مكتب</button>
+                <button #firstLecture5 (click) = "onClickTamam(firstLecture5)" name = "خدمه" value = "1" class = "btn btn-default">ن</button>
                 &nbsp;
-                <button class = "btn btn-default">ظ</button>
+                <button #firstLecture6 (click) = "onClickTamam(firstLecture6)" name = "تحت الملاحظه" value = "1"  class = "btn btn-default">ظ</button>
                 <br>
-                <button class = "btn btn-default">عرض</button>
+                <button #firstLecture7 (click) = "onClickTamam(firstLecture7)" name = "عرض" value = "1" class = "btn btn-default">ض</button>
+                &nbsp;
+                <button #firstLecture8 (click) = "onClickTamam(firstLecture8)" name = "مأموريه" value = "1" class = "btn btn-default">م</button>
+                &nbsp;
+                <button #firstLecture9 (click) = "onClickTamam(firstLecture9)" name = "فرق رياضيه" value = "1" class = "btn btn-default">ر</button>
+                &nbsp;
+                <br>
+                <button #firstLecture10 (click) = "onClickTamam(firstLecture10)" name = "مكتب" value = "1" class = "btn btn-default">مكتب</button>
+                &nbsp;
+                <button #firstLecture11 (click) = "onClickTamam(firstLecture11)" name = "مستشفى" value = "1" class = "btn btn-default">مست</button>
+                &nbsp;
+                <button #firstLecture12 (click) = "onClickTamam(firstLecture12)" name = "لجنة امتحان" value = "1" class = "btn btn-default">امتحان</button>
+                &nbsp;
+
             </div>
+        </td>
+
 <!--            <div class="radio">
                 <label><input type="radio" name="optradio">Option 1</label>
                 <label><input type="radio" name="optradio">Option 2</label>
@@ -47,80 +72,133 @@
                 <hr>
                 <label><input type="radio" name="optradio">Option 7</label>
                 <label><input type="radio" name="optradio">Option 8</label>
-            </div>-->       
-         </td>
-        <td>
-            <div name = "first-lecture" >
-                <button class = "btn btn-default">ع</button>
-                &nbsp;
-                <button class = "btn btn-default">ز</button>
-                &nbsp;
-                <button class = "btn btn-default">ل</button>
-                <br>
-                <button class = "btn btn-default">أ</button>
-                &nbsp;
-                <button class = "btn btn-default">مكتب</button>
-                &nbsp;
-                <button class = "btn btn-default">ظ</button>
-                <br>
-                <button class = "btn btn-default">عرض</button>
-            </div>
-
-        </td>
+            </div>-->
         <td>
             <div name = "second-lecture" >
-                <button class = "btn btn-default">ع</button>
+                <button #secondLecture1 (click) = "onClickTamam(secondLecture1)" name = "عياده" value = "2"  class = "btn btn-default">ع</button>
                 &nbsp;
-                <button class = "btn btn-default">ز</button>
+                <button #secondLecture2 (click) = "onClickTamam(secondLecture2)" name = "زنزانه" value = "2" class = "btn btn-default">ز</button>
                 &nbsp;
-                <button class = "btn btn-default">ل</button>
+                <button #secondLecture3 (click) = "onClickTamam(secondLecture3)" name = "تخلف" value = "2" class = "btn btn-default">ل</button>
                 <br>
-                <button class = "btn btn-default">أ</button>
+                <button #secondLecture4 (click) = "onClickTamam(secondLecture4)" name = "اجازه" value = "2" class = "btn btn-default">أ</button>
                 &nbsp;
-                <button class = "btn btn-default">مكتب</button>
+                <button #secondLecture5 (click) = "onClickTamam(secondLecture5)" name = "خدمه" value = "2" class = "btn btn-default">ن</button>
                 &nbsp;
-                <button class = "btn btn-default">ظ</button>
+                <button #secondLecture6 (click) = "onClickTamam(secondLecture6)" name = "تحت الملاحظه" value = "2" class = "btn btn-default">ظ</button>
                 <br>
-                <button class = "btn btn-default">عرض</button>
+                <button #secondLecture7 (click) = "onClickTamam(secondLecture7)" name = "عرض" value = "2" class = "btn btn-default">ض</button>
+                &nbsp;
+                <button #secondLecture8 (click) = "onClickTamam(secondLecture8)" name = "مأموريه" value = "2" class = "btn btn-default">م</button>
+                &nbsp;
+                <button #secondLecture9 (click) = "onClickTamam(secondLecture9)" name = "فرق رياضيه" value = "2" class = "btn btn-default">ر</button>
+                &nbsp;
+                <br>
+                <button #secondLecture10 (click) = "onClickTamam(secondLecture10)" name = "مكتب" value = "2" class = "btn btn-default">مكتب</button>
+                &nbsp;
+                <button #secondLecture11 (click) = "onClickTamam(secondLecture11)" name = "مستشفى" value = "2" class = "btn btn-default">مست</button>
+                &nbsp;
+                <button #secondLecture12 (click) = "onClickTamam(secondLecture12)" name = "لجنة امتحان" value = "2" class = "btn btn-default">امتحان</button>
+                &nbsp;
             </div>
 
         </td>
         <td>
             <div name = "third-lecture" >
-                <button class = "btn btn-default">ع</button>
-                &nbsp;
-                <button class = "btn btn-default">ز</button>
-                &nbsp;
-                <button class = "btn btn-default">ل</button>
-                <br>
-                <button class = "btn btn-default">أ</button>
-                &nbsp;
-                <button class = "btn btn-default">مكتب</button>
-                &nbsp;
-                <button class = "btn btn-default">ظ</button>
-                <br>
-                <button class = "btn btn-default">عرض</button>
-            </div>
+              <button #thirdLecture1 (click) = "onClickTamam(thirdLecture1)" name = "عياده" value = "3"  class = "btn btn-default">ع</button>
+              &nbsp;
+              <button #thirdLecture2 (click) = "onClickTamam(thirdLecture2)" name = "زنزانه" value = "3" class = "btn btn-default">ز</button>
+              &nbsp;
+              <button #thirdLecture3 (click) = "onClickTamam(thirdLecture3)" name = "تخلف" value = "3" class = "btn btn-default">ل</button>
+              <br>
+              <button #thirdLecture4 (click) = "onClickTamam(thirdLecture4)" name = "اجازه" value = "3" class = "btn btn-default">أ</button>
+              &nbsp;
+              <button #thirdLecture5 (click) = "onClickTamam(thirdLecture5)" name = "خدمه" value = "3" class = "btn btn-default">ن</button>
+              &nbsp;
+              <button #thirdLecture6 (click) = "onClickTamam(thirdLecture6)" name = "تحت الملاحظه" value = "3" class = "btn btn-default">ظ</button>
+              <br>
+              <button #thirdLecture7 (click) = "onClickTamam(thirdLecture7)" name = "عرض" value = "3" class = "btn btn-default">ض</button>
+              &nbsp;
+              <button #thirdLecture8 (click) = "onClickTamam(thirdLecture8)" name = "مأموريه" value = "3" class = "btn btn-default">م</button>
+              &nbsp;
+              <button #thirdLecture9 (click) = "onClickTamam(thirdLecture9)" name = "فرق رياضيه" value = "3" class = "btn btn-default">ر</button>
+              &nbsp;
+              <br>
+              <button #thirdLecture10 (click) = "onClickTamam(thirdLecture10)" name = "مكتب" value = "3" class = "btn btn-default">مكتب</button>
+              &nbsp;
+              <button #thirdLecture11 (click) = "onClickTamam(thirdLecture11)" name = "مستشفى" value = "3" class = "btn btn-default">مست</button>
+              &nbsp;
+              <button #thirdLecture12 (click) = "onClickTamam(thirdLecture12)" name = "لجنة امتحان" value = "3" class = "btn btn-default">امتحان</button>
+              &nbsp;
+          </div>
 
         </td>
         <td>
             <div name = "fourth-lecture" >
-                <button class = "btn btn-default">ع</button>
-                &nbsp;
-                <button class = "btn btn-default">ز</button>
-                &nbsp;
-                <button class = "btn btn-default">ل</button>
-                <br>
-                <button class = "btn btn-default">أ</button>
-                &nbsp;
-                <button class = "btn btn-default">مكتب</button>
-                &nbsp;
-                <button class = "btn btn-default">ظ</button>
-                <br>
-                <button class = "btn btn-default">عرض</button>
+              <button #fourthLecture1 (click) = "onClickTamam(fourthLecture1)" name = "عياده" value = "4"  class = "btn btn-default">ع</button>
+              &nbsp;
+              <button #fourthLecture2 (click) = "onClickTamam(fourthLecture2)" name = "زنزانه" value = "4" class = "btn btn-default">ز</button>
+              &nbsp;
+              <button #fourthLecture3 (click) = "onClickTamam(fourthLecture3)" name = "تخلف" value = "4" class = "btn btn-default">ل</button>
+              <br>
+              <button #fourthLecture4 (click) = "onClickTamam(fourthLecture4)" name = "اجازه" value = "4" class = "btn btn-default">أ</button>
+              &nbsp;
+              <button #fourthLecture5 (click) = "onClickTamam(fourthLecture5)" name = "خدمه" value = "4" class = "btn btn-default">ن</button>
+              &nbsp;
+              <button #fourthLecture6 (click) = "onClickTamam(fourthLecture6)" name = "تحت الملاحظه" value = "4" class = "btn btn-default">ظ</button>
+              <br>
+              <button #fourthLecture7 (click) = "onClickTamam(fourthLecture7)" name = "عرض" value = "4" class = "btn btn-default">ض</button>
+              &nbsp;
+              <button #fourthLecture8 (click) = "onClickTamam(fourthLecture8)" name = "مأموريه" value = "4" class = "btn btn-default">م</button>
+              &nbsp;
+              <button #fourthLecture9 (click) = "onClickTamam(fourthLecture9)" name = "فرق رياضيه" value = "4" class = "btn btn-default">ر</button>
+              &nbsp;
+              <br>
+              <button #fourthLecture10 (click) = "onClickTamam(fourthLecture10)" name = "مكتب" value = "4" class = "btn btn-default">مكتب</button>
+              &nbsp;
+              <button #fourthLecture11 (click) = "onClickTamam(fourthLecture11)" name = "مستشفى" value = "4" class = "btn btn-default">مست</button>
+              &nbsp;
+              <button #fourthLecture12 (click) = "onClickTamam(fourthLecture12)" name = "لجنة امتحان" value = "4" class = "btn btn-default">امتحان</button>
+              &nbsp;
             </div>
 
         </td>
+        <td>
+            <div name = "fifth-lecture" >
+              <button #fifthLecture1 (click) = "onClickTamam(fifthLecture1)" name = "عياده" value = "5"  class = "btn btn-default">ع</button>
+              &nbsp;
+              <button #fifthLecture2 (click) = "onClickTamam(fifthLecture2)" name = "زنزانه" value = "5" class = "btn btn-default">ز</button>
+              &nbsp;
+              <button #fifthLecture3 (click) = "onClickTamam(fifthLecture3)" name = "تخلف" value = "5" class = "btn btn-default">ل</button>
+              <br>
+              <button #fifthLecture4 (click) = "onClickTamam(fifthLecture4)" name = "اجازه" value = "5" class = "btn btn-default">أ</button>
+              &nbsp;
+              <button #fifthLecture5 (click) = "onClickTamam(fifthLecture5)" name = "خدمه" value = "5" class = "btn btn-default">ن</button>
+              &nbsp;
+              <button #fifthLecture6 (click) = "onClickTamam(fifthLecture6)" name = "تحت الملاحظه" value = "5" class = "btn btn-default">ظ</button>
+              <br>
+              <button #fifthLecture7 (click) = "onClickTamam(fifthLecture7)" name = "عرض" value = "5" class = "btn btn-default">ض</button>
+              &nbsp;
+              <button #fifthLecture8 (click) = "onClickTamam(fifthLecture8)" name = "مأموريه" value = "5" class = "btn btn-default">م</button>
+              &nbsp;
+              <button #fifthLecture9 (click) = "onClickTamam(fifthLecture9)" name = "فرق رياضيه" value = "5" class = "btn btn-default">ر</button>
+              &nbsp;
+              <br>
+              <button #fifthLecture10 (click) = "onClickTamam(fifthLecture10)" name = "مكتب" value = "5" class = "btn btn-default">مكتب</button>
+              &nbsp;
+              <button #fifthLecture11 (click) = "onClickTamam(fifthLecture11)" name = "مستشفى" value = "5" class = "btn btn-default">مست</button>
+              &nbsp;
+              <button #fifthLecture12 (click) = "onClickTamam(fifthLecture12)" name = "لجنة امتحان" value = "5" class = "btn btn-default">امتحان</button>
+              &nbsp;
+            </div>
+        </td>
+
     </tr>
 	</tbody>
 </table>
+
+<br>
+<div align = "center">
+    <button (click) = "onSubmit()" class = "btn btn-success" style = "width: 100px;">Add</button>
+</div>
+

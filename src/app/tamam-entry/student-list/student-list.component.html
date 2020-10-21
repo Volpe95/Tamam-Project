@@ -1,8 +1,7 @@
-<h2>Responsive Table</h2>
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>
-        <tr>
+        <tr *ngIf="TamamsInfo.length > 0">
             <th>#</th>
             <th>ID</th>
             <th>Name</th>
@@ -16,29 +15,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>4774</td>
-            <td>Mahmoud Kassem</td>
-            <td>5th Comm.</td>
-            <td>اجازه</td>
-            <td>اجازه</td>
-            <td>اجازه</td>
-            <td>اجازه</td>
-            <td>اجازه</td>
-            <td><button class = "btn btn-danger">Delete</button></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>8745</td>
-            <td>Mahmoud Naguib</td>
-            <td>5th Comp.</td>
-            <td>زنزانه</td>
-            <td>زنزانه</td>
-            <td>زنزانه</td>
-            <td>زنزانه</td>
-            <td>زنزانه</td>
-            <td><button class = "btn btn-danger">Delete</button></td>
+        <tr *ngFor = "let Tamam of TamamsInfo; index as i">
+            <td>{{i + 1}}</td>
+            <td>{{Tamam.studentInfo.ID}}</td>
+            <td>{{Tamam.studentInfo.name}}</td>
+            <td>{{Tamam.studentInfo.year}} {{Tamam.studentInfo.class}}</td>
+            <td>{{Tamam.Tamams[0]}}</td>
+            <td>{{Tamam.Tamams[1]}}</td>
+            <td>{{Tamam.Tamams[2]}}</td>
+            <td>{{Tamam.Tamams[3]}}</td>
+            <td>{{Tamam.Tamams[4]}}</td>
+            <td><button (click) = "deleteTamam(i)" [value] = "i" class = "btn btn-danger">Delete</button></td>
         </tr>
         <tbody>
     </table>

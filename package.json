@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~10.1.2",
     "@angular/router": "~10.1.2",
     "bootstrap": "^3.4.1",
+    "express": "^4.17.1",
+    "mysql2": "^2.2.5",
     "rxjs": "~6.6.0",
     "sequelize": "^6.3.5",
     "tslib": "^2.0.0",

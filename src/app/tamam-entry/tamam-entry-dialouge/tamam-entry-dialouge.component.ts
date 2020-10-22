@@ -26,6 +26,7 @@ export class TamamEntryDialougeComponent implements OnInit {
   pressedButtons : HTMLElement[] = [] ;
   numberOfLectures = 5 ;
 
+  @ViewChild('ID') inputID: ElementRef ;
   foundStudent = false ;
   StudentInfo: any = {ID: '' , name: "", year: "", class: ""} ; // student info after entering the student ID
   curDate : Date = null ;
@@ -87,12 +88,13 @@ export class TamamEntryDialougeComponent implements OnInit {
 
   onSubmit(){ // when Adding a Tamam
 
-    if(this.foundStudent == false){
-      alert('Please insert a valid ID number') ;
-      return ;
-    }
     if(this.curDate == null){
       alert('Please insert a valid date');
+      return ;
+    }
+
+    if(!this.foundStudent){
+      alert('Please insert a valid ID number') ;
       return ;
     }
 
@@ -127,8 +129,12 @@ export class TamamEntryDialougeComponent implements OnInit {
     console.log('Hello' , Tamams , this.StudentInfo);
     this.sendMsg.sendAttendanceEntryMsg({Tamams: Tamams , studentInfo: this.StudentInfo}); // should also send the Date ?
 
-    this.allWhite() ;
-    this.initializeButtons();
+    // re-initializing the variables to get ready to read a new Tamam
+    this.allWhite() ; // all buttons are white again
+    this.initializeButtons(); // previous Tamam pressed buttons are deleted
+    this.foundStudent = false ; // will start to look for a new student
+    this.inputID.nativeElement.value = '' ;   // student ID input is reset
+    this.inputID.nativeElement.focus();  // cursor is set to studentID input
     //this.StudentInfo = null ;
   }
 

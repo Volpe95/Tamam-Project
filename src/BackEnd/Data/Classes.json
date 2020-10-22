@@ -1,0 +1,143 @@
+{"Class":[
+  {
+    "classCode": "ARCH",
+    "className": "عمارة"
+  },
+  {
+    "classCode": "AA",
+    "className": "تسليح طائرات"
+  },
+  {
+    "classCode": "AB",
+    "className": "معدات الكترونية"
+  },
+  {
+    "classCode": "AG",
+    "className": "تأمين إلكتروني"
+  },
+  {
+    "classCode": "AS",
+    "className": "كهرباء و عدادات"
+  },
+  {
+    "classCode": "AM",
+    "className": "ميكا طيران"
+  },
+  {
+    "classCode": "BE",
+    "className": "هندسة طبية"
+  },
+  {
+    "classCode": "CW",
+    "className": "حرب كيميائية"
+  },
+  {
+    "classCode": "ST",
+    "className": "مدني"
+  },
+  {
+    "classCode": "CH",
+    "className": "كيمياء"
+  },
+  {
+    "classCode": "CM",
+    "className": "اتصالات"
+  },
+  {
+    "classCode": "CP",
+    "className": "حاسب"
+  },
+  {
+    "classCode": "EX",
+    "className": "مفرقعات"
+  },
+  {
+    "classCode": "EP",
+    "className": "كهرباء قوى"
+  },
+  {
+    "classCode": "ELEC",
+    "className": "كهرباء"
+  },
+  {
+    "classCode": "EW",
+    "className": "حرب إلكترونية"
+  },
+  {
+    "classCode": "TK",
+    "className": "مدرعات"
+  },
+  {
+    "classCode": "GU",
+    "className": "توجيه"
+  },
+  {
+    "classCode": "NE",
+    "className": "هندسة نووية"
+  },
+  {
+    "classCode": "NW/A",
+    "className": "تسليح و انذار بحري"
+  },
+  {
+    "classCode": "NA",
+    "className": "تسليح بحري"
+  },
+  {
+    "classCode": "NW",
+    "className": "إنذار بحري"
+  },
+  {
+    "classCode": "MECH",
+    "className": "ميكانيكا"
+  },
+  {
+    "classCode": "MV",
+    "className": "سيارات"
+  },
+  {
+    "classCode": "ME",
+    "className": "معدات ميكانيكية"
+  },
+  {
+    "classCode": "MP",
+    "className": "ميكانيكا قوى"
+  },
+  {
+    "classCode": "RP",
+    "className": "وقود صاروخي"
+  },
+  {
+    "classCode": "RD",
+    "className": "رادار"
+  },
+  {
+    "classCode": "RK",
+    "className": "ميكا صواريخ"
+  },
+  {
+    "classCode": "PE",
+    "className": "هندسة طباعة"
+  },
+  {
+    "classCode": "OE",
+    "className": "كهروبصريات"
+  },
+  {
+    "classCode": "SS",
+    "className": "هـ سفن و غواصات"
+  },
+  {
+    "classCode": "WA",
+    "className": "أسلحة و ذخيرة"
+  },
+  {
+    "classCode": "AE",
+    "className": "هندسة الفضاء"
+  },
+  {
+    "classCode": "CLASS",
+    "className": "اعدادي"
+  }
+]
+}

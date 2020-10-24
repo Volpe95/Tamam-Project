@@ -6,9 +6,10 @@
             <th>#</th>
             <th>ٍSubject Code</th>
             <th>Subject Name</th>
+            <th>year</th>
+            <th>Class Code</th>
             <th>Lecture hours</th>
-            <th>Section hours</th>
-            <th>Lab hours</th>
+            <th>Exercise hours</th>
             <th>Total Subject hours</th>
             <th>Delete?</th>
         </tr>
@@ -18,11 +19,12 @@
                 <td>{{i + 1}}</td>
                 <td>{{subject.subjectCode}}</td>
                 <td>{{subject.subjectName}}</td>
+                <td>{{subject.year}}</td>
+                <td>{{subject.classCode}}</td>
                 <td>{{subject.lectureHours}}</td>
-                <td>{{subject.sectionHours}}</td>
-                <td>{{subject.labHours}}</td>
-                <td>{{subject.totalSubjectHours}}</td>
-                <td><button class = "btn btn-danger">Delete</button></td>
+                <td>{{subject.exerciseHours}}</td>
+                <td>{{subject.totalHours}}</td>
+                <td><button (click) = 'deleteSubject(i , subject.year , subject.classCode , subject.subjectCode)' class = "btn btn-danger">Delete</button></td>
             </tr>
         <tbody>
     </table>

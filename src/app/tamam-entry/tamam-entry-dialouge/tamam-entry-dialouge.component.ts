@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Button } from 'protractor';
 import { empty, Subscription } from 'rxjs';
@@ -31,9 +32,13 @@ export class TamamEntryDialougeComponent implements OnInit {
   StudentInfo: any = {ID: '' , name: "", year: "", class: ""} ; // student info after entering the student ID
   curDate : Date = null ;
 
-  constructor(private sendMsg: ComponentCommunication , private communication: Communication) { }
+  constructor(private sendMsg: ComponentCommunication , private communication: Communication , private http: HttpClient) { }
 
   ngOnInit(): void {
+
+    this.http.get('http://localhost:3000/attendance-entry').subscribe(res => {
+      console.log(res);
+    });
 
     this.initializeButtons() ;
 

@@ -4,7 +4,6 @@ const sequelize = require('../utils/database');
 const Subject = sequelize.define('subject' , {
   subjectCode:{
     type: Sequelize.STRING,
-    primaryKey:true,
     allowNull: false
   },
   subjectName: Sequelize.STRING,

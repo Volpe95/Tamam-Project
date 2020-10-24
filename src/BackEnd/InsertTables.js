@@ -1,9 +1,12 @@
 const Sequelize = require('sequelize');
+const express = require('express');
 const sequelize = require('./utils/database');
 const Student = require('./models/Student');
+const cors = require('cors')
 const Class = require('./models/Class');
 const fs = require('fs');
 const { connect } = require('http2');
+const { where } = require('sequelize');
 
 /* Student.create({
   studentID: 4774,
@@ -45,39 +48,60 @@ fs.writeFileSync('./Data/student.json', JSON.stringify(students, null, 2)
 );
 */
 
-let rawClass = fs.readFileSync('./Data/Classes.json');
-let Classes = JSON.parse(rawClass);
-
+module.exports.insertClassTables = function (){
+  let rawClass = fs.readFileSync('./Data/Classes.json');
+  let Classes = JSON.parse(rawClass);
 // Insert Classes Table values
-/*Classes['Class'].forEach(res => {
-  Class.create({classCode: res['classCode'] , className: res['className']})
-  .then(val => {
-    //console.log(val);
-  })
-  .catch(err => console.log(err));
-});*/
-
-
-// Insert students values
-/*
-let rawStudents = fs.readFileSync('./Data/student.json');
-let students = JSON.parse(rawStudents);
-
-let total = 0 ;
-console.log(students['Students List'].length);
-for(let i = 2100 ; i < 2138; i++){
-  student = students['Students List'][i];
-  Student.create({
-    studentID: student['Student No.'],
-    studentName: student['Student Name'],
-    year: student['Student Year'],
-    classCode: student['Specialization'],
-    classNo: student['Class No.']
+  Classes['Class'].forEach(res => {
+    Class.create({classCode: res['classCode'] , className: res['className']})
+    .then(val => {
+      //console.log(val);
+    })
+    .catch(err => console.log(err));
   });
 }
-*/
+module.exports.insertStudentTables = function (){
+    // Insert students values
+    let rawStudents = fs.readFileSync('./Data/student.json');
+    let students = JSON.parse(rawStudents);
+
+    let total = 0 ;
+    console.log(students['Students List'].length);
+    for(let i = 0 ; i < 600; i++){
+      student = students['Students List'][i];
+      Student.create({
+        studentID: student['Student No.'],
+        studentName: student['Student Name'],
+        year: student['Student Year'],
+        classCode: student['Specialization'],
+        classNo: student['Class No.']
+      });
+    }
+}
 
 
-Student.findAll().then(res => {
-  console.log(res);
+/*
+
+Student
+.findAndCountAll ({ where: { year: 5 , classCode: 'RD' } })
+.then(res => {
+   console.log(res.count);
 }).catch();
+
+
+const app = express();
+app.use(cors());
+app.options('*', cors());
+
+app.listen(3000 , () => {
+    console.log('Server is listening at localhost port 3000');
+});
+
+app.get("/*", (req, res) => {
+  console.log(req.url , req.body);
+  res.send({response:'Hello nigga I am the BackEnd'});
+  res.end();
+});
+
+
+*/

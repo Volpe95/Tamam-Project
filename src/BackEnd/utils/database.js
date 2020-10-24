@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 sequelize = new Sequelize('motab3a-db' , 'root' , 'rootAdmin' , {
   dialect: 'mysql' ,
   host:'localhost',
-  logging: false,
+  logging: true,
   pool: {
     max: 30,
     min: 0,

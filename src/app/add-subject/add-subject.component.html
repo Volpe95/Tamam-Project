@@ -1,7 +1,7 @@
 <div class = "container">
     <br>
     <form  (ngSubmit) = "onSubmit()" #addSubjectForm = "ngForm">
-        
+
         <div class="form-row">
             <div class = "row">
                 <div class = "col col-xs-12">
@@ -19,34 +19,41 @@
 
         <div class = "form-row">
             <div class = "col col-xs-3">
-                <label>Total subject hours</label>
-                <input   ngModel required name = "totSubjectHours" type = "number" min = "0" value = "0" class = "form-control" />
+                <label>Year</label>
+                <input  ngModel required  name = "year" type = "number" min = "0" value = "0" class = "form-control" />
             </div>
+            <div class = "col col-xs-3">
+              <label>Class Code</label>
+              <input  ngModel required  name = "classCode" type = "text"  class = "form-control" />
+            </div>
+
             <div class = "col col-xs-3">
                 <label>Lecture Hours</label>
                 <input  ngModel required name = "lectureHours" type = "number" min = "0" value = "0" class = "form-control" />
             </div>
             <div class = "col col-xs-3">
-                <label>Section hours</label>
-                <input   ngModel required name = "sectionHours" type = "number" min = "0" value = "0"  class = "form-control" />
+                <label>Exercise hours</label>
+                <input   ngModel required name = "exerciseHours" type = "number" min = "0" value = "0"  class = "form-control" />
             </div>
+
             <div class = "col col-xs-3">
-                <label>Lab hours</label>
-                <input  ngModel required  name = "labHours" type = "number" min = "0" value = "0" class = "form-control" />
-            </div>
-        </div>
-        
+              <label>Total subject hours</label>
+              <input   ngModel required name = "totSubjectHours" type = "number" min = "0" value = "0" class = "form-control" />
+          </div>
+
+  </div>
+
         <br><br>
         <br><br>
-    
+
         <div  class = "row" align = "right">
             <div class = "col col-xs-12">
-                <button type = "submit" class = "btn btn-success">Add Subject</button>  
+                <button type = "submit" class = "btn btn-success">Add Subject</button>
             </div>
         </div>
-    
+
     </form>
-    
+
     <hr>
     <app-subjects-records></app-subjects-records>
 </div>

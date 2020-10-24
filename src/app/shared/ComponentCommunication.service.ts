@@ -1,5 +1,7 @@
-import {Subject , BehaviorSubject , Observable} from 'rxjs' ;
+import {BehaviorSubject , Observable} from 'rxjs' ;
 import { Injectable } from '@angular/core';
+
+import {Subject} from '../add-subject/Subject.interface';
 
 @Injectable({ providedIn: 'root' })
 
@@ -15,10 +17,10 @@ export class ComponentCommunication{
 
 
     // Communcation for Add Subject Component
-    private addSubject = new BehaviorSubject('') ;
+    private addSubject = new BehaviorSubject<Subject>(null) ;
     addSubjectMsg = this.addSubject.asObservable() ;
 
-    SendAddSubjectMsg(message : any){
+    SendAddSubjectMsg(message){
       this.addSubject.next(message) ;
     }
 

@@ -1,11 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Button } from 'protractor';
-import { empty, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { ComponentCommunication } from 'src/app/shared/ComponentCommunication.service';
-
+import {Student} from '../../shared/student.interface';
 import {Communication} from '../Communication.service' ;
+import {studentTamam} from '../studentTamam.interface';
 
+import {serverOptions} from '../../shared/server.option';
+import { DateOnlyDataType } from 'sequelize/types';
 @Component({
   selector: 'app-tamam-entry-dialouge',
   templateUrl: './tamam-entry-dialouge.component.html',
@@ -14,11 +17,6 @@ import {Communication} from '../Communication.service' ;
 
 
 export class TamamEntryDialougeComponent implements OnInit {
-
-  Students: any[] = [
-    {ID: 4774 , name : "Mahmoud Kassem" , year: "5th" , class :"Communication"},
-    {ID: 8745 , name : "Mahmoud Naguib" , year: "5th" , class :"Computer"}
-  ];
 
   // used for communication using observables
   subscription: Subscription;
@@ -30,18 +28,13 @@ export class TamamEntryDialougeComponent implements OnInit {
   @ViewChild('ID') inputID: ElementRef ;
   foundStudent = false ;
   StudentInfo: any = {ID: '' , name: "", year: "", class: ""} ; // student info after entering the student ID
-  curDate : Date = null ;
+  curDate : string = null ;
+  studentTamamsCurDate: any = [] ;
 
   constructor(private sendMsg: ComponentCommunication , private communication: Communication , private http: HttpClient) { }
 
   ngOnInit(): void {
-
-    this.http.get('http://localhost:3000/attendance-entry').subscribe(res => {
-      console.log(res);
-    });
-
     this.initializeButtons() ;
-
   }
 
   initializeButtons(){
@@ -61,7 +54,6 @@ export class TamamEntryDialougeComponent implements OnInit {
         this.pressedButtons[i].style.color = 'black' ;
       }
     }
-
   }
 
   onClickTamam(button){ // when a button is pressed
@@ -132,7 +124,15 @@ export class TamamEntryDialougeComponent implements OnInit {
     console.log(Tamams);
     /// POST req to the server with the Date , StudentInfo and Tamams OR POST at student list to get the response there
     console.log('Hello' , Tamams , this.StudentInfo);
-    this.sendMsg.sendAttendanceEntryMsg({Tamams: Tamams , studentInfo: this.StudentInfo}); // should also send the Date ?
+    this.sendMsg.sendAttendanceEntryMsg({
+       ...this.StudentInfo,
+       firstLectureTamam: Tamams[0],
+       secondLectureTamam: Tamams[1],
+       thirdLectureTamam: Tamams[2],
+       fourthLectureTamam: Tamams[3],
+       fifthLectureTamam: Tamams[4],
+       date: this.curDate
+      }); // should also send the Date ?
 
     // re-initializing the variables to get ready to read a new Tamam
     this.allWhite() ; // all buttons are white again
@@ -143,20 +143,33 @@ export class TamamEntryDialougeComponent implements OnInit {
     //this.StudentInfo = null ;
   }
 
-  dateChanged(Date){
+  dateChanged(Date : string){
     this.curDate = Date ;
-    // POST request here to get the already stored Tamams
+    console.log(this.curDate);
+    this.sendMsg.sendCurDateTamamsMsg(this.curDate);
   }
 
 
-  getStudentInfo(ID : number){
+  getStudentInfo(ID){
     this.foundStudent = false ;
-    this.Students.forEach(student => { // will make a db query instead of that later
-        if(student.ID == ID){
-          this.StudentInfo = student;
-          this.foundStudent = true ;
-        }
-    });
+
+    this.http.get(serverOptions.serverUrl + '/' + 'getStudent' , {
+      responseType: 'json',
+      observe: 'response',
+      params:{
+        id: ID,
+      },
+    }).subscribe(response => {
+      console.log(response); // Debug :)
+      if(!response.body){
+        alert('Incorrect ID number');
+        return ;
+      }
+      else {
+        this.StudentInfo = response.body;
+        this.foundStudent = true ;
+      }
+    })
 
     if(!this.foundStudent){
       this.StudentInfo = {ID: ID , name: "", year: "", class: ""}

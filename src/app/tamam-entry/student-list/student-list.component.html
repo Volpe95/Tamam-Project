@@ -1,7 +1,7 @@
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>
-        <tr *ngIf="TamamsInfo.length > 0">
+        <tr *ngIf="curTamamList.length > 0">
             <th>#</th>
             <th>ID</th>
             <th>Name</th>
@@ -15,16 +15,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor = "let Tamam of TamamsInfo; index as i">
+        <tr *ngFor = "let Tamam of curTamamList; index as i">
             <td>{{i + 1}}</td>
-            <td>{{Tamam.studentInfo.ID}}</td>
-            <td>{{Tamam.studentInfo.name}}</td>
-            <td>{{Tamam.studentInfo.year}} {{Tamam.studentInfo.class}}</td>
-            <td>{{Tamam.Tamams[0]}}</td>
-            <td>{{Tamam.Tamams[1]}}</td>
-            <td>{{Tamam.Tamams[2]}}</td>
-            <td>{{Tamam.Tamams[3]}}</td>
-            <td>{{Tamam.Tamams[4]}}</td>
+            <td>{{Tamam.studentID}}</td>
+            <td>{{Tamam.studentName}}</td>
+            <td>{{Tamam.year}} {{Tamam.className}}</td>
+            <td>{{Tamam.firstLectureTamam}}</td>
+            <td>{{Tamam.secondLectureTamam}}</td>
+            <td>{{Tamam.thirdLectureTamam}}</td>
+            <td>{{Tamam.fourthLectureTamam}}</td>
+            <td>{{Tamam.fifthLectureTamam}}</td>
             <td><button (click) = "deleteTamam(i)" [value] = "i" class = "btn btn-danger">Delete</button></td>
         </tr>
         <tbody>

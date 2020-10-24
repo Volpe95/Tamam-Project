@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Student } from 'src/app/shared/student.service';
+import { Student } from 'src/app/shared/student.interface';
 import { ComponentCommunication } from '../../shared/ComponentCommunication.service';
 import { Subject } from '../Subject.interface';
+import {serverOptions} from '../../shared/server.option';
 
 @Component({
   selector: 'app-subjects-records',
@@ -22,7 +23,7 @@ export class SubjectsRecordsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.http
-      .get<Subject[]>('http://localhost:3200/add-subject', {
+      .get<Subject[]>(serverOptions.serverUrl + '/add-subject', {
         responseType: 'json',
         observe: 'response',
       })
@@ -41,7 +42,7 @@ export class SubjectsRecordsComponent implements OnInit, OnDestroy {
         return;
       }
       this.http
-        .post<Subject>('http://localhost:3200/add-subject', message, {
+        .post<Subject>(serverOptions.serverUrl + '/add-subject', message, {
           responseType: 'json',
           observe: 'response',
         })
@@ -52,7 +53,7 @@ export class SubjectsRecordsComponent implements OnInit, OnDestroy {
             this.sendMsg.SendAddSubjectMsg(null);
           } else {
             alert(
-              "Error Occured, Please check you havn't already inserted a subject with the same subject code before."
+              "Error Occured, Please check that you havn't already inserted the same subject before"
             );
             this.sendMsg.SendAddSubjectMsg(null);
           }
@@ -63,7 +64,7 @@ export class SubjectsRecordsComponent implements OnInit, OnDestroy {
   deleteSubject(index , year, classCode, subjectCode) {
     console.log(year, classCode, subjectCode);
     this.http
-      .delete('http://localhost:3200/add-subject', {
+      .delete(serverOptions.serverUrl + '/add-subject', {
         responseType: 'json',
         observe: 'response',
         params: {

@@ -1,17 +1,20 @@
 import {BehaviorSubject , Observable} from 'rxjs' ;
 import { Injectable } from '@angular/core';
+import {studentTamam} from '../tamam-entry/studentTamam.interface';
 
 import {Subject} from '../add-subject/Subject.interface';
+import {sendPercentage} from '../calculate-percentages/calculate-percentages.interface';
 
 @Injectable({ providedIn: 'root' })
 
 export class ComponentCommunication{
 
+    constructor(){}
     // Communcation for Calculate Percentage Component
-    private CalculatePercentage = new BehaviorSubject('');
+    private CalculatePercentage = new BehaviorSubject<sendPercentage>(null);
     CalculatePercentageMsg = this.CalculatePercentage.asObservable();
 
-    SendCalculatePercentageMsg(message: any) {
+    SendCalculatePercentageMsg(message: sendPercentage) {
         this.CalculatePercentage.next(message)
       }
 
@@ -35,13 +38,21 @@ export class ComponentCommunication{
 
     // Attendance Entry Communication
 
-    private attendanceEntry = new BehaviorSubject('');
+    private attendanceEntry = new BehaviorSubject<studentTamam>(null);
     attendanceEntryMsg = this.attendanceEntry.asObservable() ;
 
-    sendAttendanceEntryMsg(message : any){
+    sendAttendanceEntryMsg(message : studentTamam){
       this.attendanceEntry.next(message) ;
     }
 
+    // Attendance Entry Communication send cur date tamams
+
+    private curDateTamams = new BehaviorSubject('');
+    curDateTamamsMsg = this.curDateTamams.asObservable() ;
+
+    sendCurDateTamamsMsg(message){
+      this.curDateTamams.next(message);
+    }
     // TamamEntry communication
 
     private TamamEntry = new BehaviorSubject('');

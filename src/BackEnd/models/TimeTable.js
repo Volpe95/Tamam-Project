@@ -12,14 +12,27 @@ const TimeTable = sequelize.define('timeTable' , {
     type: Sequelize.STRING,
     foreignKey: true
   },
+  className:{
+    type : Sequelize.STRING,
+    allowNull: true,
+  },
+  classNo:{
+    type: Sequelize.INTEGER,
+  },
   subjectCode:{
     type:Sequelize.STRING,
     foreignKey: true
   },
+  subjectName:{
+    type: Sequelize.STRING,
+  },
   oddWeek:Sequelize.BOOLEAN,
   Day:Sequelize.STRING,
   lectureNo:Sequelize.INTEGER,
-  lectureHall:Sequelize.STRING
+  lectureHall:Sequelize.STRING,
+  lectureType:{
+    type: Sequelize.STRING,
+  },
 });
 
 module.exports = TimeTable;

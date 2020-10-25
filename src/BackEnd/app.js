@@ -174,3 +174,104 @@ app.delete('/deleteTamam' , (req , res) => {
     console.log(err);
   })
 })
+
+
+app.get('/getAllClasses' , (req , res) =>{
+   // refactor the this part to make a table with those unique values
+    var notUniqueClasses;
+    var uniqueClasses;
+    Student.findAll({attributes: ['year' , 'classCode' , 'classNo'] , raw: true })
+    .then(result => {
+      notUniqueClasses = result;
+      uniqueClasses = notUniqueClasses.filter((v,i,a)=>a.findIndex(t=>(JSON.stringify(t) === JSON.stringify(v)))===i);
+      return Class.findAll({raw: true});
+    })
+    .then(result => {
+      var returnedClasses = [] ;
+      for(var i = 0 ; i < uniqueClasses.length; i++){
+          var val = uniqueClasses[i].classCode;
+          for(var j = 0 ; j < result.length; j++){
+            if(result[j].classCode == val){
+              returnedClasses.push({...uniqueClasses[i] , className: result[j].className});
+              break ;
+            }
+          }
+      }
+      res.send(returnedClasses);
+      res.end();
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+
+app.get('/getAllSubjects' , (req , res) => {
+
+    Subject.findAll({raw: true})
+    .then(result => {
+      res.send(result);
+      res.end() ;
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
+
+
+app.post('/insertTimeTableSlot' , (req , res) => {
+
+  // the update should be later be done with a more smart way
+  var TimeTableSlot = req.body ;
+  var created = false ;
+  var slotCondition = {
+    year: TimeTableSlot.year ,
+    classCode: TimeTableSlot.classCode,
+    classNo: TimeTableSlot.classNo,
+    Day: TimeTableSlot.Day,
+    oddWeek: TimeTableSlot.oddWeek,
+    lectureNo: TimeTableSlot.lectureNo,
+  };
+
+  console.log(req.body);
+  TimeTable.findOrCreate({
+    where: slotCondition,
+    defaults: TimeTableSlot})
+    .then(result => {
+      console.log(result[1]);
+      if(!result[1]){
+        return TimeTable.destroy({where: slotCondition});
+      }
+      else {
+        created = true ;
+      }
+    })
+    .then(result => {
+      if(!created)
+        return  TimeTable.create(TimeTableSlot);
+    })
+    .then(result => {
+      res.send(true);
+      res.end() ;
+    })
+    .catch(err => {
+      res.send(false);
+      res.end() ;
+      console.log(err);
+    })
+});
+
+
+app.get('/getTimeTable' , (req , res) => {
+    console.log(req.query);
+    TimeTable.findAll({where: req.query})
+    .then(result => {
+      console.log(result);
+      res.send(result);
+      res.end() ;
+    })
+    .catch(err => {
+      res.end() ;
+      console.log(err);
+    })
+});

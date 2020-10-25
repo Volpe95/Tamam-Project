@@ -1,10 +1,10 @@
 <div class = "container">
-    
+
 
     <form (ngSubmit) = "onSubmit()" class = "inline" #timeTableForm = "ngForm">
         <div class="form-group col-xs-2">
             <label for="sel1">Year</label>
-            <select ngModel required  name = "year" class="form-control" id="sel1">
+            <select #year ngModel required (change) = "onChangeYear(year.value)" name = "year" class="form-control" id="sel1">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -14,19 +14,28 @@
         </div>
 
         <div class="form-group col-xs-2">
-            <label for="sel1">Class</label>
-            <select ngModel required  name ="class" class="form-control" id="sel1">
-            <option>Communication</option>
-            <option>Computer</option>
-            <option>Civil</option>
-            <option>Mechanical</option>
-            <option>Aerospace</option>
-            </select>
+          <label for="sel1">Class</label>
+          <select #Class ngModel  required (change) = "onChangeClass(Class.value)" name ="class" class="form-control" id="sel2">
+            <option></option>
+            <option *ngFor = "let class of classNames">
+            {{class}}
+          </option>
+          </select>
+
         </div>
+        <div class="form-group col-xs-2">
+          <label for="sel1">Class No.</label>
+          <select #ClassNo ngModel  required  (change) = "onChangeClassNo()" name ="classNo" class="form-control" id="sel2">
+            <option></option>
+            <option *ngFor = "let number of classNo">
+              {{number}}
+            </option>
+          </select>
+      </div>
 
         <div class="form-group col-xs-2">
             <label for="sel1">Day</label>
-            <select ngModel required  name = "day" class="form-control" id="sel1">
+            <select ngModel required  name = "day" class="form-control" id="sel3">
             <option>Saturday</option>
             <option>Sunday</option>
             <option>Monday</option>
@@ -40,38 +49,36 @@
 
         <div class="form-group col-xs-2">
 
-            <label for="sel1">Lecture</label>
-            <select ngModel required  name ="lecture" class="form-control" id="sel1">
-            <option>1st Lecture</option>
-            <option>2nd Lecture</option>
-            <option>3rd Lecture</option>
-            <option>4th Lecture</option>
-            <option>5th Lecture</option>
+            <label for="sel1">Lecture Number</label>
+            <select ngModel required  name ="lecture" class="form-control" id="sel4">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
             </select>
         </div>
 
 
         <div class="form-group col-xs-7">
             <label for="sel1">Subject</label>
-            <select ngModel required  name ="subject" class="form-control" id="sel1">
-            <option>Math</option>
-            <option>Physics</option>
-            <option>Mechanics</option>
-            <option>Mil. Subject</option>
-            <option>Dark Magic</option>
+            <select ngModel required  name ="subject" class="form-control" id="sel5">
+            <option></option>
+            <option *ngFor = "let subject of subjects">
+              {{subject.subjectName}}
+            </option>
             </select>
         </div>
 
         <div class="form-group col-xs-4">
-            <label for="sel1">Lecture type</label>
-            <select ngModel required  name ="lectureType" class="form-control" id="sel1">
-            <option>Lecture</option>
-            <option>Section</option>
-            <option>Lab</option>
+            <label for="sel1">Lecture Week type</label>
+            <select ngModel required  name ="lectureWeekType" class="form-control" id="sel6">
+            <option>Odd Week</option>
+            <option>Even Week</option>
             </select>
         </div>
 
-    
+
     <br><br>
     <br><br>
     <br>

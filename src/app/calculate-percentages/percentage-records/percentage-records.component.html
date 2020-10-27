@@ -1,6 +1,6 @@
 <div class="table-wrapper">
     <table class="fl-table">
-        <thead>
+        <thead *ngIf = "percentageRecords.length != 0">
         <tr>
             <th>#</th>
             <th>ٍStudent ID</th>
@@ -11,13 +11,13 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>4774</td>
-            <td>Mahmoud Kassem</td>
-            <td>5th Communications</td>
-            <td>Antenna (WTF403)</td>
-            <td>100%</td>
+        <tr *ngFor = "let record of percentageRecords; index as i">
+            <td>{{i + 1}}</td>
+            <td>{{record.studentID}}</td>
+            <td>{{record.studentName}}</td>
+            <td>{{record.year}} {{record.className}} {{record.classNo}}</td>
+            <td>{{record.subjectName}} ({{record.subjectCode}})</td>
+            <td>{{record.percentage}}%</td>
         </tr>
         <tbody>
     </table>

@@ -5,7 +5,7 @@
       <label for="date">Date:</label>
       <input (change) = "dateChanged(Date.value)" #Date type='date' placeholder='dd/mm/yyyy' name='form[datetime]' class = "form-control" id='datetime' value = "" required/>
       <label for="id">Student ID:</label>
-      <input #ID (change) = 'getStudentInfo(ID.value)' type="number"  class="form-control" id="pwd" required/>
+      <input #ID (change) = 'getStudentInfo(ID.value , Date.value)' type="number"  class="form-control" id="pwd" required/>
   </div>
 
   </div>
@@ -14,11 +14,11 @@
 	<tr class="table-headers">
     <th>Name</th>
     <th>Class</th>
-    <th>1st Lecture:  <br>Math</th>
-    <th>2nd Lecture:  <br> Physics</th>
-    <th>3rd Lecture:  <br> Control</th>
-    <th>4th Lecture:   <br>Mil. Subjects</th>
-    <th>5th Lecture:   <br>Whatever</th>
+    <th>1st Lecture:  <br>{{curDateSubjects[0]}}</th>
+    <th>2nd Lecture:  <br> {{curDateSubjects[1]}}</th>
+    <th>3rd Lecture:  <br> {{curDateSubjects[2]}}</th>
+    <th>4th Lecture:   <br>{{curDateSubjects[3]}}</th>
+    <th>5th Lecture:   <br>{{curDateSubjects[4]}}</th>
 	</tr>
 	</thead>
 	<tbody #Tamams>

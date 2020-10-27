@@ -12,6 +12,7 @@ import {serverOptions} from '../../shared/server.option';
 })
 export class PercentageRecordsComponent implements OnInit, OnDestroy {
   subscribtion: Subscription;
+  percentageRecords : any[] = [] ;
   sendPercentageInfo: sendPercentage;
   constructor(
     private sendMsg: ComponentCommunication,
@@ -36,6 +37,8 @@ export class PercentageRecordsComponent implements OnInit, OnDestroy {
             percentage: this.sendPercentageInfo.percentage,
           },
         }).subscribe(res => {
+          var tmp : any = res.body;
+          this.percentageRecords = tmp;
           console.log(res);
         });
         this.sendMsg.SendCalculatePercentageMsg(null); // make the value empty again to avoid resending when re-intiating the Comp.

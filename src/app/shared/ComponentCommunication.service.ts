@@ -1,6 +1,7 @@
 import {BehaviorSubject , Observable} from 'rxjs' ;
 import { Injectable } from '@angular/core';
 import {studentTamam} from '../tamam-entry/studentTamam.interface';
+import {TimeTableSlot} from '../time-table-entry/timeTableSlot.interface';
 
 import {Subject} from '../add-subject/Subject.interface';
 import {sendPercentage} from '../calculate-percentages/calculate-percentages.interface';
@@ -29,10 +30,10 @@ export class ComponentCommunication{
 
 
     // Coomuncation for timeTable Component
-    private timeTableSlot = new BehaviorSubject('');
+    private timeTableSlot = new BehaviorSubject<TimeTableSlot[]>(null);
     timeTableSlotMsg = this.timeTableSlot.asObservable() ;
 
-    sendTimeTableSlot(message : any){
+    sendTimeTableSlot(message : TimeTableSlot[]){
       this.timeTableSlot.next(message) ;
     }
 

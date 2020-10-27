@@ -5,6 +5,7 @@ import {NgForm} from '@angular/forms' ;
 import { values } from 'sequelize/types/lib/operators';
 import {ComponentCommunication} from '../shared/ComponentCommunication.service';
 import { serverOptions } from '../shared/server.option';
+import {TimeTableSlot} from './timeTableSlot.interface';
 
 @Component({
   selector: 'app-time-table-entry',
@@ -15,6 +16,7 @@ import { serverOptions } from '../shared/server.option';
 export class TimeTableEntryComponent implements OnInit {
   @ViewChild('timeTableForm' , {static : true}) timeTableForm : NgForm
 
+  days = ['Saturday','Sunday' , 'Monday' , 'Tuesday' , 'Wednesday' , 'Thursday' , 'Friday'];
   classes: {classCode , className? , classNo?: number , year?}[] = [] ;
   subjects: {subjectCode , subjectName? , classCode , year}[] = [] ;
   allClasses: {classCode , className? , classNo?: number , year?}[] = [] ;
@@ -23,7 +25,6 @@ export class TimeTableEntryComponent implements OnInit {
   constructor(private sendMsg: ComponentCommunication , private http: HttpClient) { }
 
   ngOnInit(): void {
-
     this.http
     .get(serverOptions.serverUrl + '/' + 'getAllClasses' , {
       responseType: 'json',
@@ -68,8 +69,14 @@ export class TimeTableEntryComponent implements OnInit {
         break ;
       }
     }
-    var oddWeek = (this.timeTableForm.value.lectureWeekType === 'Odd Week');
-    console.log('oddWeek' , oddWeek);
+    var lectureWeekType = 0 ;
+    if(this.timeTableForm.value.lectureWeekType === 'Odd Week'){
+      lectureWeekType = 1 ;
+    }
+    else if(this.timeTableForm.value.lectureWeekType === 'Even Week') {
+        lectureWeekType = 2 ;
+    }
+    console.log('lectureWeekType' , lectureWeekType);
 
     var TimeTableSlot = {
       year: this.timeTableForm.value.year,
@@ -78,22 +85,23 @@ export class TimeTableEntryComponent implements OnInit {
       classNo: this.timeTableForm.value.classNo,
       subjectCode: subjectCode,
       subjectName: this.timeTableForm.value.subject,
-      oddWeek: oddWeek,
+      lectureWeekType: lectureWeekType,
       Day: this.timeTableForm.value.day,
       lectureNo: this.timeTableForm.value.lecture,
       lectureHall : null,
       lectureType: null,
     };
+    console.log(TimeTableSlot , ' ' , this.subjects);
     this.http.post(serverOptions.serverUrl + '/' + 'insertTimeTableSlot' , TimeTableSlot , {
       responseType: 'json',
       observe: 'response'
     })
     .subscribe(result => {
       console.log(result);
+      this.updateTimeTableSlots(this.timeTableForm.value.year , classCode , this.timeTableForm.value.classNo);
+      this.init();
+      this.timeTableForm.resetForm() ;
     })
-    this.init();
-    this.timeTableForm.resetForm() ;
-    this.sendMsg.sendTimeTableSlot(values);
   }
 
   init(){
@@ -152,23 +160,26 @@ export class TimeTableEntryComponent implements OnInit {
         classCode = this.classes[i].classCode;
       }
     }
+    this.updateTimeTableSlots(this.timeTableForm.value.year , classCode , this.timeTableForm.value.classNo);
+  }
 
-    this.http.get(serverOptions.serverUrl + '/' + 'getTimeTable' , {
+  updateTimeTableSlots(year , classCode , classNo){
+    this.http.get<TimeTableSlot[]>(serverOptions.serverUrl + '/' + 'getTimeTable' , {
       responseType: 'json',
       observe: 'response',
       params:{
         classCode: classCode,
-        classNo: this.timeTableForm.value.classNo,
-        year: this.timeTableForm.value.year,
+        classNo: classNo,
+        year: year,
       },
     })
     .subscribe(response => {
-      console.log(this.timeTableForm.value.classNo);
-      // now create an interface like the timeTable and send to the Table comp
+      // as a later TODO fetch from the server only the needed data
+      var timeTableDbRecords = response.body;
+      this.sendMsg.sendTimeTableSlot(timeTableDbRecords);
       console.log(response.body);
     });
+
   }
-
-
 }
 

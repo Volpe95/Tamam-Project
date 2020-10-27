@@ -17,61 +17,51 @@
       <div>5th Lecture</div>
     </div>
     <div class="content">
-      <div>
-        <div class="accent-orange-gradient" >
-          <h2 style="text-align: center;"></h2>
+        <div *ngFor = "let day of days; index as i"  [class] ="colors[i]">
+            <h5 style="text-align: center;">
+              {{timeTableValues[1][day][0]}}
+              <div *ngIf = "timeTableValues[1][day][1] !== ''" >
+                <hr>
+                {{timeTableValues[1][day][1]}}
+              </div>
+            </h5>
         </div>
+        <div *ngFor = "let day of days; index as i"  [class] ="colors[i]">
+          <h5 style="text-align: center;">
+            {{timeTableValues[2][day][0]}}
+            <div *ngIf = "timeTableValues[2][day][1] !== ''" >
+              <hr>
+              {{timeTableValues[2][day][1]}}
+            </div>
+          </h5>
       </div>
-      <div></div>
-      <div></div>
-      <div></div>
-          <div>
-        <div class="accent-green-gradient"></div>
+      <div *ngFor = "let day of days; index as i"  [class] ="colors[i]">
+        <h5 style="text-align: center;">
+          {{timeTableValues[3][day][0]}}
+          <div *ngIf = "timeTableValues[3][day][1] !== ''" >
+            <hr>
+            {{timeTableValues[3][day][1]}}
+          </div>
+        </h5>
+    </div>
+    <div *ngFor = "let day of days; index as i" [class] ="colors[i]" >
+      <h5 style="text-align: center;">
+        {{timeTableValues[4][day][0]}}
+        <div *ngIf = "timeTableValues[4][day][1] !== ''" >
+          <hr>
+          {{timeTableValues[4][day][1]}}
+        </div>
+      </h5>
+  </div>
+  <div *ngFor = "let day of days; index as i"  [class] ="colors[i]" >
+    <h5 style="text-align: center;">
+      {{timeTableValues[5][day][0]}}
+      <div *ngIf = "timeTableValues[5][day][1] !== ''" >
+        <hr>
+        {{timeTableValues[5][day][1]}}
       </div>
-      <div class="weekend"></div>
-      <div class="weekend"></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div>
-        <div class="accent-cyan-gradient"></div>
-      </div>
-      <div></div>
-      <div class="weekend"></div>
-      <div class="weekend"></div>
-      <div>
-        <div class="accent-pink-gradient"></div>
-      </div>
-      <div></div>
-      <div>
-        <div class="accent-purple-gradient"></div>
-      </div>
-      <div></div>
-      <div></div>
-      <div class="weekend"></div>
-      <div class="weekend"></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div class="weekend"></div>
-      <div class="weekend"></div>
-      <div>
-        <div class="accent-purple-gradient"></div>
-      </div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div class="weekend"></div>
-      <div class="weekend"></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div class="weekend"></div>
-      <div class="weekend"></div>
+    </h5>
+</div>
+
     </div>
   </div>

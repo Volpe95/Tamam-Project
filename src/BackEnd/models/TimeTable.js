@@ -26,7 +26,10 @@ const TimeTable = sequelize.define('timeTable' , {
   subjectName:{
     type: Sequelize.STRING,
   },
-  oddWeek:Sequelize.BOOLEAN,
+  lectureWeekType:{
+    type:Sequelize.INTEGER, // 0 both , 1 odd , 2 even
+    allowNull: false,
+  },
   Day:Sequelize.STRING,
   lectureNo:Sequelize.INTEGER,
   lectureHall:Sequelize.STRING,

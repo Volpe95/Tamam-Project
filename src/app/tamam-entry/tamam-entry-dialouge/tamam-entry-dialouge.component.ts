@@ -24,7 +24,7 @@ export class TamamEntryDialougeComponent implements OnInit {
   // variables to store pressed buttons html elements
   pressedButtons : HTMLElement[] = [] ;
   numberOfLectures = 5 ;
-
+  curDateSubjects = ['' , '' , '' , '' , ''];
   @ViewChild('ID') inputID: ElementRef ;
   foundStudent = false ;
   StudentInfo: any = {ID: '' , name: "", year: "", class: ""} ; // student info after entering the student ID
@@ -140,6 +140,8 @@ export class TamamEntryDialougeComponent implements OnInit {
     this.foundStudent = false ; // will start to look for a new student
     this.inputID.nativeElement.value = '' ;   // student ID input is reset
     this.inputID.nativeElement.focus();  // cursor is set to studentID input
+    this.StudentInfo = {}
+    this.curDateSubjects = ['' , '' , '' , '' , ''];
     //this.StudentInfo = null ;
   }
 
@@ -150,23 +152,31 @@ export class TamamEntryDialougeComponent implements OnInit {
   }
 
 
-  getStudentInfo(ID){
+  getStudentInfo(ID , date){
     this.foundStudent = false ;
+    this.curDateSubjects = ['' , '' , '' , '' , ''];
 
     this.http.get(serverOptions.serverUrl + '/' + 'getStudent' , {
       responseType: 'json',
       observe: 'response',
       params:{
         id: ID,
+        date: date,
       },
     }).subscribe(response => {
       console.log(response); // Debug :)
       if(!response.body){
-        alert('Incorrect ID number');
+        alert('Incorrect ID number or Invalid date');
         return ;
       }
       else {
-        this.StudentInfo = response.body;
+        let body: any = response.body;
+        this.StudentInfo = body.studentInfo;
+        let subjects = body.subjects;
+        for(let i = 0 ; i < subjects.length; i++){
+          this.curDateSubjects[subjects[i].lectureNo - 1] = subjects[i].subjectName;
+        }
+        console.log(this.curDateSubjects);
         this.foundStudent = true ;
       }
     })

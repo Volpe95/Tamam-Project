@@ -5,6 +5,7 @@ import {TimeTableSlot} from '../time-table-entry/timeTableSlot.interface';
 
 import {Subject} from '../add-subject/Subject.interface';
 import {sendPercentage} from '../calculate-percentages/calculate-percentages.interface';
+import { Lewa2TalbaTamam } from '../students-services/Lewa2TalbaTamam.interface';
 
 @Injectable({ providedIn: 'root' })
 
@@ -61,5 +62,21 @@ export class ComponentCommunication{
 
     sendTamamEntryMsg(message: any){
       this.TamamEntry.next(message) ;
+    }
+
+    // Student Services Component
+
+    private studentServices = new BehaviorSubject<Lewa2TalbaTamam[]>(null);
+    studentServicesMsg = this.studentServices.asObservable();
+
+    sendStudentServicesMsg(message : Lewa2TalbaTamam[]){
+      this.studentServices.next(message);
+    }
+
+    private studentServiceID = new BehaviorSubject<number>(null);
+    studentServiceIDMsg = this.studentServiceID.asObservable();
+
+    sendStudentServiceIDMsg(message: number){
+      this.studentServiceID.next(message);
     }
 }

@@ -1,0 +1,24 @@
+<div class="table-wrapper">
+  <table class="fl-table" *ngIf = "Tamams !== null && Tamams.length > 0">
+      <thead >
+      <tr>
+          <th>#</th>
+          <th>ٍStudent ID</th>
+          <th>Student Name</th>
+          <th>Class</th>
+          <th>Tamam Type</th>
+          <th>Delete?</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor = "let Tamam of Tamams; index as i">
+          <td>{{i + 1}}</td>
+          <td>{{Tamam.studentID}}</td>
+          <td>{{Tamam.studentName}}</td>
+          <td>{{Tamam.year}} {{Tamam.className}} {{Tamam.classNo}}</td>
+          <td>{{Tamam.tamamType}}</td>
+          <td><button (click) = "deleteStudentServiceTamam(Tamam.id)" class = "btn btn-danger" >Delete</button></td>
+      </tr>
+      <tbody>
+  </table>
+</div>

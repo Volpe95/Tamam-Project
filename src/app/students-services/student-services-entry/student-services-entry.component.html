@@ -1,0 +1,33 @@
+<div class = "container">
+  <br>
+  <form  #StudentServicesForm = "ngForm">
+      <div class = "form-row">
+          <div class = "row">
+
+              <div class = "col col-xs-12">
+
+                  <div class = "col col-xs-2">
+                    <label>Date</label>
+                    <input  #Date ngModel (change) = 'onChangeDate(Date.value)' type='date' placeholder='dd/mm/yyyy' name='date' class = "form-control" id='datetime' value = "" required/>
+                  </div>
+
+                  <div class = "col col-xs-2">
+                    <label>Tamam Type</label>
+                    <select #TamamType ngModel (change) = 'onChangeTamam()'class = "form-control" required ngModel name = "tamamType">
+                      <option></option>
+                      <option *ngFor = "let tamam of tamamTypes">{{tamam}}</option>
+                    </select>
+                  </div>
+
+                  <div class = "col col-xs-2">
+                    <label>Student ID</label>
+                    <input #StudentID ngModel (keyup.enter) = "addStudentTamam()"type = "number" name = "studentID" class = "form-control" required>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </form>
+  <br>
+  <hr>
+
+</div>

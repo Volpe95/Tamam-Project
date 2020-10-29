@@ -20,6 +20,8 @@ import { TimetableComponent } from './time-table-entry/timetable/timetable.compo
 import { TamamEntryDialougeComponent } from './tamam-entry/tamam-entry-dialouge/tamam-entry-dialouge.component';
 import { SubjectsRecordsComponent } from './add-subject/subjects-records/subjects-records.component';
 import { PercentageRecordsComponent } from './calculate-percentages/percentage-records/percentage-records.component';
+import { StudentServicesEntryComponent } from './students-services/student-services-entry/student-services-entry.component';
+import { StudentServicesRecordsComponent } from './students-services/student-services-records/student-services-records.component';
 
 
 const appRoutes: Routes = [
@@ -49,7 +51,9 @@ const appRoutes: Routes = [
     TimetableComponent,
     TamamEntryDialougeComponent,
     SubjectsRecordsComponent,
-    PercentageRecordsComponent
+    PercentageRecordsComponent,
+    StudentServicesEntryComponent,
+    StudentServicesRecordsComponent
   ],
   imports: [
     BrowserModule,

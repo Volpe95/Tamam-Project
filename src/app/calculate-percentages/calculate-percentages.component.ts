@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { ComponentCommunication } from "../shared/ComponentCommunication.service";
 
+
 // Make the table appear only when you press calculate use query parameters as well to select
 @Component({
   selector: 'app-calculate-percentages',
@@ -16,6 +17,7 @@ export class CalculatePercentagesComponent implements OnInit {
   constructor(private snedMsg: ComponentCommunication) { }
 
   ngOnInit(): void {
+
   }
 
   onSubmit(){ // triggered when the submit button is pressed

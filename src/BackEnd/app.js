@@ -4,7 +4,7 @@ const Sequelize = require('sequelize');
 const sequelize = require('./utils/database');
 const insertdb = require('./InsertTables');
 const { Op } = require("sequelize");
-
+const async = require('async');
 // DB models
 const Class = require('./models/Class');
 const Student = require('./models/Student');
@@ -12,6 +12,10 @@ const Subject = require('./models/Subject');
 const TimeTable = require('./models/TimeTable');
 const TermSchedule = require('./models/TermSchedule');
 const Tamams = require('./models/Tamams');
+const Lewa2TalbaTamam = require('./models/Lewa2TalbaTamam');
+const { exit } = require('process');
+const { rejects } = require('assert');
+
 /*
 // sync DB table
 sequelize
@@ -527,4 +531,127 @@ app.get('/getTimeTable', (req, res) => {
       res.end();
       console.log(err);
     })
+});
+
+
+app.get('/getLewa2TalbaTamams' , (req , res) => {
+  var query = req.query ;
+  var studentInfo , ret ;
+
+  Lewa2TalbaTamam.findAll({where: query , raw: true})
+  .then(result => {
+     if(result.length <= 0){
+      res.send([]);
+      res.end();
+      return [] ;
+    }
+    ret = result ;
+    console.log(result[0].studentID);
+    IDsArray = result.map(item => {
+      return item['studentID'];
+    });
+
+    return Student.findAll({where : {studentID: IDsArray} , raw: true});
+  })
+  .then(result => {
+    classCodesArray = result.map(item => {
+      return item['classCode'];
+    });
+    IDindexed = {};
+
+    result.map(item => {
+      IDindexed[item['studentID']] = item;
+    });
+
+    ret = ret.map(item => {
+      tmp = {...IDindexed[item['studentID']] , ...item};
+      return tmp ;
+    });
+
+
+    classCodesArray = [...new Set(classCodesArray)];
+    return Class.findAll({where: {classCode: classCodesArray} , raw: true});
+  })
+  .then(result => {
+
+    var classCodeIndexed = {} ;
+    result.map(item => {
+        classCodeIndexed[item['classCode']] = item['className'];
+    });
+
+    console.log(classCodeIndexed);
+    //console.log(ret);
+
+    ret = ret.map(item => {
+      return {...item , className: classCodeIndexed[item['classCode']]};
+    });
+
+    res.send(ret);
+    res.end() ;
+  })
+  .catch(err => {
+    res.send(false);
+    res.end();
+    console.log(err);
+  })
+});
+
+app.delete('/deleteStudentService' , (req , res) => {
+    Lewa2TalbaTamam.destroy({where:  req.query})
+    .then(result => {
+      console.log(req.query);
+      res.send({status: true});
+      res.end() ;
+    })
+    .catch(err => {
+      res.send({status: false});
+      res.end();
+      console.log(err);
+    })
+})
+app.post('/addLewa2TalbaTamam' , (req , res) => {
+  // Fix the issue with the then statement///// IMPORTANT
+  var values = req.body; // {date , tamamType , studentID}
+  var studentInfo;
+  Student.findAndCountAll({attributes: ['studentName' , 'year' , 'classCode' , 'classNo'] , where: {studentID: values.studentID} , raw: true})
+  .then(result => {
+    console.log(result);
+    if(result.count == 0){
+      // No student found with the sent ID
+      res.send({status: false , statusMsg: 'No student found with the given ID'});
+      res.end();
+    }
+    else{
+      studentInfo = result.rows[0];
+      return Lewa2TalbaTamam.count({where: values , raw: true});
+    }
+  })
+  .then(result => {
+
+    if(result == 0){
+      return Lewa2TalbaTamam.create(values);
+    }
+    else {
+      res.send({status: false , statusMsg: 'Same student was given same Tamam type at the same date before'});
+      res.end();
+    }
+  })
+  .then(result => {
+    console.log(studentInfo);
+    Class.findAll({where:{classCode: studentInfo.classCode} , raw: true})
+    .then(classInfo => {
+      res.send({status: true , ...studentInfo , className: classInfo[0].className});
+      res.end() ;
+    })
+    .catch(err => {
+      res.send({status: false , statusMsg: 'Internal Server error please try again later'});
+      res.end();
+      console.log(err);
+    })
+  })
+  .catch(err => {
+    console.log(err);
+    res.send({status: false , statusMsg: 'Internal Server error please try again later'});
+    res.end();
+  });
 });

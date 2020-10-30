@@ -1,1 +1,18 @@
-<p>comparisons works!</p>
+<div class = "container">
+
+  <div class = "row">
+    <div class = "col col-xs-3">
+      <label for = 'date' >Date to Compare</label>
+      <input #Date type = "date" placeholder='dd/mm/yyyy' name='date' class = "form-control col-xs-3" required />
+    </div>
+
+
+    <div class = "col col-xs-3" align = "right">
+      <br>
+      <button (click) = "getFalseTamams()" class = "btn btn-primary">Compare</button>
+    </div>
+  </div>
+  <hr>
+</div>
+<app-comparion-records></app-comparion-records>
+

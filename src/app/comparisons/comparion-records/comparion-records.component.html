@@ -1,0 +1,64 @@
+<div class="table-wrapper">
+  <table class="fl-table" *ngIf="falseTamams !== null && falseTamams.length > 0">
+      <thead>
+      <tr>
+          <th>#</th>
+          <th>ٍStudent ID</th>
+          <th>Student Name</th>
+          <th>Class</th>
+          <th>1st Lecture</th>
+          <th>2nd Lecture</th>
+          <th>3rd Lecture</th>
+          <th>4th Lecture</th>
+          <th>5th Lecture</th>
+          <th>Available Tamams</th>
+          <th># Of Absent Lectures</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor = "let falseTamam of falseTamams; index as i">
+          <td>{{i + 1}}</td>
+          <td>{{falseTamam.studentID}}</td>
+          <td>{{falseTamam.studentName}}</td>
+          <td>{{falseTamam.year + falseTamam.className + falseTamam.classNo}}</td>
+
+          <td>
+            <p [style.color] = "falseTamam.firstLectureTamamColor">
+              {{falseTamam.firstLectureTamam}}
+            </p>
+          </td>
+
+          <td>
+            <p [style.color] = "falseTamam.secondLectureTamamColor">
+              {{falseTamam.secondLectureTamam}}
+            </p>
+          </td>
+
+          <td>
+            <p [style.color] = "falseTamam.thirdLectureTamamColor">
+              {{falseTamam.thirdLectureTamam}}
+            </p>
+          </td>
+
+          <td>
+            <p [style.color] = "falseTamam.fourthLectureTamamColor">
+              {{falseTamam.fourthLectureTamam}}
+            </p>
+          </td>
+
+          <td>
+            <p [style.color] = "falseTamam.fifthLectureTamamColor">
+              {{falseTamam.fifthLectureTamam}}
+            </p>
+          </td>
+
+          <td>
+            <p *ngFor = "let trueTamam of falseTamam.trueLewa2TalbaTamams">
+              {{trueTamam}}
+            </p>
+          </td>
+          <td>{{falseTamam.absenceCnt}}</td>
+      </tr>
+      <tbody>
+  </table>
+</div>

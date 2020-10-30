@@ -22,6 +22,7 @@ import { SubjectsRecordsComponent } from './add-subject/subjects-records/subject
 import { PercentageRecordsComponent } from './calculate-percentages/percentage-records/percentage-records.component';
 import { StudentServicesEntryComponent } from './students-services/student-services-entry/student-services-entry.component';
 import { StudentServicesRecordsComponent } from './students-services/student-services-records/student-services-records.component';
+import { ComparionRecordsComponent } from './comparisons/comparion-records/comparion-records.component';
 
 
 const appRoutes: Routes = [
@@ -53,7 +54,8 @@ const appRoutes: Routes = [
     SubjectsRecordsComponent,
     PercentageRecordsComponent,
     StudentServicesEntryComponent,
-    StudentServicesRecordsComponent
+    StudentServicesRecordsComponent,
+    ComparionRecordsComponent
   ],
   imports: [
     BrowserModule,

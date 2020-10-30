@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ComponentCommunication } from '../shared/ComponentCommunication.service';
+import { serverOptions } from '../shared/server.option';
 
 @Component({
   selector: 'app-comparisons',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComparisonsComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('Date') Date: ElementRef;
+
+  constructor(private http: HttpClient , private sendMsg: ComponentCommunication) { }
 
   ngOnInit(): void {
+
   }
 
+  getFalseTamams(){
+    let date = this.Date.nativeElement.value;
+    if(!date){
+      alert('Please Insert a valid date');
+      return ;
+    }
+
+    this.http.get(serverOptions.serverUrl + '/' + 'getFalseTamams' , {
+      responseType: 'json',
+      observe: 'response',
+      params:{
+        date: date,
+      }
+    }).subscribe(response => {
+      console.log(response);
+      this.sendMsg.sendFalseTamamMsg(response.body);
+    })
+
+
+  }
 }

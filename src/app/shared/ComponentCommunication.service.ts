@@ -79,4 +79,13 @@ export class ComponentCommunication{
     sendStudentServiceIDMsg(message: number){
       this.studentServiceID.next(message);
     }
+
+    // send false Tamams at students Services Comparisons records
+
+    private falseTamam = new BehaviorSubject<any>(null);
+    falseTamamMsg = this.falseTamam.asObservable() ;
+
+    sendFalseTamamMsg(message: any){
+      this.falseTamam.next(message);
+    }
 }

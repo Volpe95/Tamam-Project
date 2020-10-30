@@ -655,3 +655,59 @@ app.post('/addLewa2TalbaTamam' , (req , res) => {
     res.end();
   });
 });
+
+
+app.get('/getFalseTamams' , (req , res) => {
+  // query {date}
+  var query = req.query , tamams , lewa2Tamams;
+
+  var attributesNames = [
+  'firstLectureTamam',
+  'secondLectureTamam',
+  'thirdLectureTamam',
+  'fourthLectureTamam',
+  'fifthLectureTamam'
+  ];
+
+  Tamams.findAll({where: {date: query.date} , raw: true})
+  .then(result => {
+    tamams = result ;
+    return Lewa2TalbaTamam.findAll({where: {date: query.date} , raw: true});
+  })
+  .then(result => {
+    lewa2Tamams = result ;
+    var ret =  [] , cnt = 0 ;
+    for(let i = 0; i < tamams.length; i++){
+      var trueTamam = [false, false , false , false , false] , trueCnt = 0;
+      var tmpTamams = [] ;
+      for(let j = 0 ; j < lewa2Tamams.length; j++){
+        if(tamams[i].studentID == lewa2Tamams[j].studentID){
+            for(let k = 0 ; k < attributesNames.length; k++){
+              var tamamType = tamams[i][attributesNames[k]];
+              if(tamamType == '---' || tamamType == lewa2Tamams[j].tamamType){
+                trueCnt += (!trueTamam[k]);
+                trueTamam[k] = true;
+              }
+            }
+            tmpTamams.push(lewa2Tamams[j].tamamType);
+        }
+      }
+
+      console.log(trueCnt);
+      console.log(tamams[i].studentID);
+
+      if(trueCnt !== 5){
+        ret.push({
+          ...tamams[i] ,
+          trueLewa2TalbaTamams: tmpTamams});
+      }
+
+    }
+
+    res.send(ret);
+    res.end();
+  })
+  .catch(err => {
+    console.log(err);
+  })
+})

@@ -9,6 +9,5 @@ const { where , DATEONLY } = require('sequelize');
 
 const Lewa2TalbaTamam = require('./models/Lewa2TalbaTamam');
 
-
-//sequelize.sync();
+sequelize.sync();
 

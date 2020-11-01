@@ -13,8 +13,12 @@ const TimeTable = require('./models/TimeTable');
 const TermSchedule = require('./models/TermSchedule');
 const Tamams = require('./models/Tamams');
 const Lewa2TalbaTamam = require('./models/Lewa2TalbaTamam');
-const { exit } = require('process');
-const { rejects } = require('assert');
+const Geza2at = require('./models/geza2at');
+const Geza2atTypes = require('./models/Geza2atTypes');
+const Officers = require('./models/Officers');
+const Crimes = require('./models/Crimes');
+const { AotCompiler } = require('@angular/compiler');
+
 
 /*
 // sync DB table
@@ -172,11 +176,10 @@ app.get('/calculatePercentage', (req, res) => {
           var end = new Date(semseterWeeks[j].endDate);
 
           if (date >= start && date <= end) {
-            WeekType = (j + 1) % 2;
+            WeekType = semseterWeeks[j].weekNo % 2;
             break;
           }
         }
-
         for(let j = 0 ; j < TamamPropertiesNames.length; j++){
           if(result[i][TamamPropertiesNames[j]] != '---'){
             Tamams.push(j + 1);
@@ -684,6 +687,10 @@ app.get('/getFalseTamams' , (req , res) => {
         if(tamams[i].studentID == lewa2Tamams[j].studentID){
             for(let k = 0 ; k < attributesNames.length; k++){
               var tamamType = tamams[i][attributesNames[k]];
+
+              tamamType = (tamamType == 'أجازه')? 'اجازه': tamamType ;
+              lewa2Tamams[j].tamamType = (lewa2Tamams[j].tamamType == 'أجازه')? 'اجازه': lewa2Tamams[j].tamamType ;
+
               if(tamamType == '---' || tamamType == lewa2Tamams[j].tamamType){
                 trueCnt += (!trueTamam[k]);
                 trueTamam[k] = true;
@@ -697,6 +704,7 @@ app.get('/getFalseTamams' , (req , res) => {
       console.log(tamams[i].studentID);
 
       if(trueCnt !== 5){
+        console.log(tamams[i] , tmpTamams);
         ret.push({
           ...tamams[i] ,
           trueLewa2TalbaTamams: tmpTamams});
@@ -709,5 +717,106 @@ app.get('/getFalseTamams' , (req , res) => {
   })
   .catch(err => {
     console.log(err);
+  })
+})
+
+
+app.get('/getStudentInfo' , (req , res) => {
+  var query = req.query ; // {ID: studentID}
+  var ret;
+  Student.findByPk(query.studentID , {raw: true})
+  .then(result => {
+
+    if(!result){ // student Not found
+      res.send({status: false , responseMsg: 'Student not found'});
+      res.end();
+    }
+    else {
+      ret = result;
+      Class.findByPk(result.classCode , {raw : true})
+      .then(classData => {
+        ret = {...ret , ...classData};
+        res.send({status: true , responseMsg: 'OK' , ...ret});
+        res.end() ;
+      })
+      .catch(err => {
+        res.send({
+           status: false,
+           responseMsg: 'Internal server Error plese try again later'});
+        res.end();
+
+        console.log(err);
+      })
+    }
+  })
+  .catch(err => {
+    res.send({
+      status: false,
+      responseMsg: 'Internal server Error plese try again later'});
+    res.end();
+    console.log(err);
+  })
+})
+
+
+app.get('/getCrimes' , (req , res) => {
+
+    Crimes.findAll({raw: true})
+    .then(result => {
+      res.send(result);
+      res.end();
+    })
+    .catch(err => {
+      res.send(false);
+      res.end();
+      console.log(err);
+    });
+})
+
+app.get('/getPunishments' , (req , res) => {
+
+  Geza2atTypes.findAll({raw: true})
+  .then(result => {
+    res.send(result);
+    res.end();
+  })
+  .catch(err => {
+    console.log(err);
+    res.send(false);
+    res.end();
+  });
+
+})
+
+
+app.get('/getOfficersByRank' , (req , res) => {
+  var query = req.query ; // {officerRank}
+
+  Officers.findAll({where: query , raw:  true})
+  .then(result => {
+    console.log(result);
+    res.send(result);
+    res.end();
+  })
+  .catch(err => {
+    console.log(err);
+    res.send(false);
+    res.end() ;
+  })
+
+});
+
+
+app.get('/getGeza2at' , (req , res) => {
+  var query = req.query;
+  Geza2at.findAll({where: query  , raw : true})
+  .then(result => {
+    res.send(result);
+    res.end() ;
+  })
+  .catch(err => {
+    console.log(err);
+    res.send(false);
+    res.end();
   })
 })

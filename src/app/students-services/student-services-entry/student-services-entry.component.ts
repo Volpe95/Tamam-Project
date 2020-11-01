@@ -12,7 +12,7 @@ import { Lewa2TalbaTamam } from '../Lewa2TalbaTamam.interface';
   styleUrls: ['./student-services-entry.component.css']
 })
 export class StudentServicesEntryComponent implements OnInit , OnDestroy {
-  tamamTypes = ['عياده', 'زنزانه' , 'أجازه' , 'خدمه' , 'عرض' , 'مأموريه' , 'مكتب' , 'مستشفى' , 'تحت الملاحظه' , 'فرق رياضيه' , 'غياب' ];
+  tamamTypes = ['عياده', 'زنزانه' , 'اجازه' , 'خدمه' , 'عرض' , 'مأموريه' , 'مكتب' , 'مستشفى' , 'تحت الملاحظه' , 'فرق رياضيه' , 'غياب' ];
   subsubription : Subscription;
   Tamams : Lewa2TalbaTamam[] = [] ;
 

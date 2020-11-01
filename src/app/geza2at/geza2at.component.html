@@ -1,0 +1,122 @@
+
+<div class = "container">
+  <br>
+  <form (submit)  = "onSubmit()" class = "inline" #Geza2atForm = "ngForm">
+
+    <div class = "row">
+      <div class = "form-group col-xs-2">
+        <label for = "filterBy">Filter By</label>
+        <select (change) = "onChangeFilterBy()" id = "filterBy" name = "filterBy" class = "form-control">
+          <option selected>Student</option>
+          <option>Date</option>
+        </select>
+
+      </div>
+
+      <div class = "form-group col-xs-2">
+        <label for = "geza2Date">Crime Date</label>
+        <input (change) = "onChangeDate()" type = "date" class = "form-control"  name = "geza2Date" ngModel required>
+      </div>
+
+      <div class = "form-group col-xs-2">
+        <label for = "geza2Type">Punishment Type</label>
+        <select #PunishmentType (change) = "onChangePunishmentType(PunishmentType.value)" name = "geza2Type" class = "form-control">
+          <option selected>Normal</option>
+          <option>Points</option>
+        </select>
+      </div>
+
+      <div class = "form-group col-xs-2">
+        <label for = "studentID">Student ID</label>
+        <input #StudentID (keyup.enter) = "onChangeStudentID(StudentID.value)" type = "number" class = "form-control" ngModel name = "studentID" required>
+      </div>
+
+    </div>
+
+    <div class = "row">
+      <div class = "form-group col-xs-3">
+        <label for = "studentName">Student Name</label>
+        <input [value] = "studentInfo.studentName" type = "text" class = "form-control" name = "studentName"  readonly = "readonly">
+      </div>
+
+      <div class = "form-group col-xs-2">
+        <label for = "year">Year</label>
+        <input [value] = "studentInfo.year" type = "text" class = "form-control" name = "year"  readonly>
+      </div>
+
+      <div class = "form-group col-xs-2">
+        <label for = "ClassName">Class Name</label>
+        <input [value] = "studentInfo.className" type = "text" class = "form-control" name = "ClassName"  readonly>
+      </div>
+
+      <div class = "form-group col-xs-2">
+        <label for = "ClassNo">Class No</label>
+        <input [value] = "studentInfo.classNo" type = "text" class = "form-control" name = "ClassNo"  readonly>
+      </div>
+
+    </div>
+
+    <div class = "row">
+
+      <div class = "form-group col-xs-4">
+
+        <label for = "studentCrime">Crime</label>
+        <select class = "form-control" name = "crimeName" ngModel required>
+          <option></option>
+          <option  *ngFor = "let crime of crimes">
+            {{crime.crimeName}}
+          </option>
+        </select>
+
+      </div>
+
+      <div *ngIf = "!punishmentType" class = "form-group col-xs-4">
+        <div name = "ifNormal">
+          <label for = "studentGeza2">Punishment</label>
+          <select class = "form-control" name = "geza2Name" ngModel required>
+            <option></option>
+            <option  *ngFor = "let punishment of punishments">
+              {{punishment.geza2Name}}
+            </option>
+            </select>
+        </div>
+
+      </div>
+
+      <div  class = "form-group col-xs-4" *ngIf = "punishmentType">
+        <div name = "ifPoints">
+          <label for = "studentGeza2">Points</label>
+          <input name = "studentGeza2" class = "form-control" ngModel type = 'number' [value] = '' readonly/>
+        </div>
+      </div>
+
+    </div>
+
+    <div class = "row">
+
+      <div class = "form-group col-xs-2">
+        <label for = "officerRank">Officer Rank</label>
+        <select #Rank (change) = "onChangeOfficerRank(Rank.value)"class = "form-control" name = "officerRank" ngModel required>
+          <option>لواء</option>
+          <option>عميد</option>
+        </select>
+      </div>
+
+      <div class = "form-group col-xs-4">
+        <label for = "officerName">Officer Name</label>
+        <select class = "form-control" name = "officerName" ngModel required>
+          <option></option>
+          <option *ngFor = "let officer of filteredOfficers">
+            {{officer.officerName}}
+          </option>
+        </select>
+      </div>
+
+    </div>
+
+    <div align = "right">
+      <button action = "submit" class = "btn btn-success" align = "right" style = "width: 100px; height:40px;">ADD</button>
+    </div>
+
+  </form>
+</div>

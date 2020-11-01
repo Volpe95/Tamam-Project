@@ -23,10 +23,12 @@ import { PercentageRecordsComponent } from './calculate-percentages/percentage-r
 import { StudentServicesEntryComponent } from './students-services/student-services-entry/student-services-entry.component';
 import { StudentServicesRecordsComponent } from './students-services/student-services-records/student-services-records.component';
 import { ComparionRecordsComponent } from './comparisons/comparion-records/comparion-records.component';
+import { Geza2atComponent } from './geza2at/geza2at.component';
+import { Geza2atRecordsComponent } from './geza2at/geza2at-records/geza2at-records.component';
 
 
 const appRoutes: Routes = [
-  {path: 'attendance-entry' , component: TamamEntryComponent},
+  {path: 'attendance-entry' ,  component: TamamEntryComponent},
   {path: 'timetable-entry' , component: TimeTableEntryComponent},
   {path: 'add-subject' ,  component: AddSubjectComponent},
   {path: 'percentages' , component: CalculatePercentagesComponent},
@@ -34,6 +36,7 @@ const appRoutes: Routes = [
   {path: 'students-services-entry' , component: StudentsServicesComponent},
   {path: 'comparisons' , component: ComparisonsComponent},
   {path: 'Manage' , component: ManageStudentsComponent},
+  {path: 'geza2at' , component: Geza2atComponent},
 ];
 @NgModule({
   declarations: [
@@ -55,7 +58,9 @@ const appRoutes: Routes = [
     PercentageRecordsComponent,
     StudentServicesEntryComponent,
     StudentServicesRecordsComponent,
-    ComparionRecordsComponent
+    ComparionRecordsComponent,
+    Geza2atComponent,
+    Geza2atRecordsComponent
   ],
   imports: [
     BrowserModule,

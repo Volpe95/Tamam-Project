@@ -615,7 +615,7 @@ app.delete('/deleteStudentService' , (req , res) => {
 app.post('/addLewa2TalbaTamam' , (req , res) => {
   // Fix the issue with the then statement///// IMPORTANT
   var values = req.body; // {date , tamamType , studentID}
-  var studentInfo;
+  var studentInfo , recordID;
   Student.findAndCountAll({attributes: ['studentName' , 'year' , 'classCode' , 'classNo'] , where: {studentID: values.studentID} , raw: true})
   .then(result => {
     console.log(result);
@@ -640,10 +640,12 @@ app.post('/addLewa2TalbaTamam' , (req , res) => {
     }
   })
   .then(result => {
-    console.log(studentInfo);
+    //console.log(studentInfo);
+    recordID = result.dataValues.id;
+    console.log(result.dataValues);
     Class.findAll({where:{classCode: studentInfo.classCode} , raw: true})
     .then(classInfo => {
-      res.send({status: true , ...studentInfo , className: classInfo[0].className});
+      res.send({status: true , ...studentInfo , id: recordID , className: classInfo[0].className});
       res.end() ;
     })
     .catch(err => {
@@ -812,6 +814,35 @@ app.get('/getGeza2at' , (req , res) => {
   Geza2at.findAll({where: query  , raw : true})
   .then(result => {
     res.send(result);
+    res.end() ;
+  })
+  .catch(err => {
+    console.log(err);
+    res.send(false);
+    res.end();
+  })
+})
+
+
+app.post('/addGeza2' , (req , res) => {
+  console.log(req.body);
+  Geza2at.create(req.body)
+  .then(result => {
+    res.send(true);
+    res.end() ;
+  })
+  .catch(err => {
+    res.send(false);
+    res.end();
+    console.log(err);
+  })
+})
+
+
+app.delete('/deleteGeza2' , (req , res) => {
+  Geza2at.destroy({where: req.query})
+  .then(result => {
+    res.send(true);
     res.end() ;
   })
   .catch(err => {

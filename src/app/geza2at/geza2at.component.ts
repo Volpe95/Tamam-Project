@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ComponentCommunication } from '../shared/ComponentCommunication.service';
 import { serverOptions } from '../shared/server.option';
 
 @Component({
@@ -9,19 +10,21 @@ import { serverOptions } from '../shared/server.option';
   styleUrls: ['./geza2at.component.css']
 })
 export class Geza2atComponent implements OnInit {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , private sendMsg: ComponentCommunication) { }
 
   @ViewChild('Geza2atForm') geza2atForm: NgForm;
+  @ViewChild('StudentID') StudentID: ElementRef;
 
   filterBy = false ; // filter by student
   punishmentType = false ; // normal geza2 NOT points
 
+  geza2Points = 20;
   geza2atList: any[] = [] ;
   filteredOfficers : any[] = [] ;
   crimes: any[] = [] ;
   punishments: any[] = [] ;
 
-  studentInfo = {studentName: '' , year: '' , className: '' , classNo: ''};
+  studentInfo: any = {studentName: '' , year: '' , className: '' , classNo: ''};
   ngOnInit(): void {
 
     console.log(this.punishmentType);
@@ -54,9 +57,81 @@ export class Geza2atComponent implements OnInit {
 
   }
 
+  getGeza2Json(officer , studentCrime , studentPunishment){
+
+    var geza2Info =   {
+      studentID: this.studentInfo.studentID,
+      studentName: this.studentInfo.studentName,
+      year: this.studentInfo.year,
+      classCode: this.studentInfo.classCode,
+      className: this.studentInfo.className,
+      classNo: this.studentInfo.classNo,
+      crimeID: studentCrime.crimeID,
+      crimeName: studentCrime.crimeName,
+      officerID: officer.officerID,
+      officerRank: officer.officerRank,
+      officerName: officer.officerName,
+      geza2Date: this.geza2atForm.value.geza2Date,
+    };
+
+    if(this.punishmentType){
+      geza2Info['geza2Points'] = studentPunishment;
+    }
+    else {
+      geza2Info['geza2ID'] = studentPunishment.geza2ID;
+      geza2Info['geza2Name'] = studentPunishment.geza2Name;
+    }
+
+    return geza2Info ;
+  }
   onSubmit(){
-    console.log('Okay');
-    console.log(this.geza2atForm.value);
+
+    if(!this.geza2atForm.valid){
+      alert('One or more values are not yet filled');
+      return ;
+    }
+
+    console.log(this.geza2atForm.value.studentID);
+
+    var values = this.geza2atForm.value ;
+    var officer = this.filteredOfficers[this.geza2atForm.value.officerArrayIndex];
+    var studentCrime = this.crimes[values.crimeArrayIndex];
+    var studentPunishment;
+    if(this.punishmentType){
+      studentPunishment = values.geza2Points;
+    }
+    else {
+      studentPunishment = this.punishments[values.geza2ArrayIndex];
+    }
+    var geza2Info = this.getGeza2Json(officer , studentCrime , studentPunishment);
+
+    this.http.post(serverOptions.serverUrl + '/addGeza2' , geza2Info , {
+      responseType: 'json',
+      observe: 'response',
+    })
+    .subscribe(response => {
+      if(!response.body){
+        alert('Internal server error please try again later');
+        return ;
+      }
+
+      this.StudentID.nativeElement.focus();
+      this.StudentID.nativeElement.value = '' ;
+      // send the data to geza2at-records component
+      //this.geza2atList.unshift(geza2Info);
+      //this.sendMsg.sendGeza2atMsg(this.geza2atList);
+
+      if(this.filterBy){
+        this.updateGeza2List({geza2Date: geza2Info.geza2Date});
+      }
+      else {
+        this.updateGeza2List({studentID: geza2Info.studentID});
+      }
+    })
+
+    this.studentInfo = {studentName: '' , year: '' , className: '' , classNo: ''};
+    this.geza2atForm.controls['studentID'].setValue('');
+    console.log(geza2Info);
   }
 
   onChangeStudentID(ID){
@@ -76,14 +151,14 @@ export class Geza2atComponent implements OnInit {
         return ;
       }
       if(!this.filterBy){
-        this.updatePunishments({studentID: ID});
+        this.updateGeza2List({studentID: ID});
       }
 
       this.studentInfo = responseBody ;
     })
 
   }
-  updatePunishments(parameters){
+  updateGeza2List(parameters){
     // get req to update the geza2at list
 
     console.log(parameters);
@@ -99,14 +174,18 @@ export class Geza2atComponent implements OnInit {
         return ;
       }
       this.geza2atList = response.body;
+      this.geza2atList.sort((a , b) => {
+        return a.geza2Date < b.geza2Date? 1 : -1;
+      })
+      this.sendMsg.sendGeza2atMsg(this.geza2atList);
+
     })
 
-    console.log(this.geza2atList);
   }
 
   onChangeDate(){
     if(this.filterBy){
-      this.updatePunishments({geza2Date: this.geza2atForm.value.geza2Date});
+      this.updateGeza2List({geza2Date: this.geza2atForm.value.geza2Date});
     }
   }
   onChangePunishmentType(value){
@@ -128,7 +207,7 @@ export class Geza2atComponent implements OnInit {
       parameters = {studentID: this.geza2atForm.value.studentID};
     }
 
-    this.updatePunishments(parameters) ;
+    this.updateGeza2List(parameters) ;
   }
 
   onChangeOfficerRank(rank){

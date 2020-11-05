@@ -1,62 +1,32 @@
 <div class="table-wrapper">
-  <table class="fl-table">
+  <table class="fl-table" *ngIf = "geza2atList.length > 0">
       <thead>
       <tr>
           <th>#</th>
           <th>ٍStudent ID</th>
           <th>Student Name</th>
           <th>Class</th>
-          <th>1st Lecture</th>
-          <th>2nd Lecture</th>
-          <th>3rd Lecture</th>
-          <th>4th Lecture</th>
-          <th>5th Lecture</th>
-          <th>Available Tamams</th>
-          <th># Of Absent Lectures</th>
+          <th>Crime</th>
+          <th>Punishment</th>
+          <th>Officer</th>
+          <th>Date</th>
+          <th>Delete?</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-          <td>
-            <p>
-
-            </p>
-          </td>
-
-          <td>
-            <p>
-
-            </p>
-          </td>
-
-          <td>
-            <p >
-
-            </p>
-          </td>
-
-          <td>
-            <p >
-
-            </p>
-          </td>
-
-          <td>
-            <p>
-
-            </p>
-          </td>
-
-          <td>
-            <p >
-            </p>
-          </td>
-          <td></td>
+      <tr *ngFor = "let geza2 of geza2atList; index as i">
+        <td>{{i + 1}}</td>
+        <td>{{geza2.studentID}}</td>
+        <td>{{geza2.studentName}}</td>
+        <td>{{convertEnToAr(geza2.year)}} {{geza2.className}} {{convertEnToAr(geza2.classNo)}}</td>
+        <td>{{geza2.crimeName}}</td>
+        <td>
+          <p *ngIf = "geza2.geza2Name != null">{{geza2.geza2Name}}</p>
+          <p *ngIf = "geza2.geza2Points != null">{{geza2.geza2Points}} points</p>
+        </td>
+        <td><h6>{{geza2.officerRank}}/{{geza2.officerName}}</h6></td>
+        <td>{{geza2.geza2Date}}</td>
+        <td><button class = "btn btn-danger" (click) = "onDeleteGeza2(i)">Delete</button></td>
       </tr>
       <tbody>
   </table>

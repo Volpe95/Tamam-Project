@@ -80,12 +80,12 @@ const Geza2at = sequelize.define('geza2at' , {
   geza2ID:{
     type: Sequelize.INTEGER,
     foreignKey: true ,
-    allowNull: false ,
+    allowNull: true ,
   },
 
   geza2Name: {
     type: Sequelize.STRING,
-    allowNull: false ,
+    allowNull: true ,
   },
 
   geza2Date:{

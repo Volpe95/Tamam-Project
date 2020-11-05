@@ -20,7 +20,7 @@
           <td>{{i + 1}}</td>
           <td>{{falseTamam.studentID}}</td>
           <td>{{falseTamam.studentName}}</td>
-          <td>{{falseTamam.year + falseTamam.className + falseTamam.classNo}}</td>
+          <td>{{convertEnToAr(falseTamam.year) + falseTamam.className + convertEnToAr(falseTamam.classNo)}}</td>
 
           <td>
             <p [style.color] = "falseTamam.firstLectureTamamColor">

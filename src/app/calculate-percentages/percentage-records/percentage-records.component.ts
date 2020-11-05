@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { ComponentCommunication } from '../../shared/ComponentCommunication.service';
 import {sendPercentage} from '../calculate-percentages.interface';
 import {serverOptions} from '../../shared/server.option';
+import { utils } from 'src/utils/utils.service';
 
 @Component({
   selector: 'app-percentage-records',
@@ -16,9 +17,11 @@ export class PercentageRecordsComponent implements OnInit, OnDestroy {
   sendPercentageInfo: sendPercentage;
   constructor(
     private sendMsg: ComponentCommunication,
-    private http: HttpClient
+    private http: HttpClient,
+    private utils: utils,
   ) {}
 
+  convertEnToAr = this.utils.convertEnToAr;
   ngOnInit(): void {
     this.subscribtion = this.sendMsg.CalculatePercentageMsg.subscribe(
       (message) => {
@@ -39,6 +42,28 @@ export class PercentageRecordsComponent implements OnInit, OnDestroy {
         }).subscribe(res => {
           var tmp : any = res.body;
           this.percentageRecords = tmp;
+          this.percentageRecords = this.percentageRecords.sort((a , b) => {
+            return (a.percentage < b.percentage? 1: -1);
+          });
+          console.log(this.percentageRecords);
+          var tmpPercentageRecords = {} , studentIDs = [] ;
+          for(let i = 0 ; i < this.percentageRecords.length; i++){
+
+            if(!tmpPercentageRecords[this.percentageRecords[i].studentID]){
+              tmpPercentageRecords[this.percentageRecords[i].studentID] = [] ;
+              studentIDs.push(this.percentageRecords[i].studentID);
+            }
+            tmpPercentageRecords[this.percentageRecords[i].studentID].push(this.percentageRecords[i]);
+          }
+
+          this.percentageRecords = [] ;
+          console.log(tmpPercentageRecords);
+          for(let i = 0 ; i < studentIDs.length; i++){
+            for(let j = 0 ; j < tmpPercentageRecords[studentIDs[i]].length; j++){
+              this.percentageRecords.push(tmpPercentageRecords[studentIDs[i]][j]);
+            }
+          }
+          console.log(this.percentageRecords);
           console.log(res);
         });
         this.sendMsg.SendCalculatePercentageMsg(null); // make the value empty again to avoid resending when re-intiating the Comp.

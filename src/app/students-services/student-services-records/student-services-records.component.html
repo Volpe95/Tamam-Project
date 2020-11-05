@@ -15,7 +15,7 @@
           <td>{{i + 1}}</td>
           <td>{{Tamam.studentID}}</td>
           <td>{{Tamam.studentName}}</td>
-          <td>{{Tamam.year}} {{Tamam.className}} {{Tamam.classNo}}</td>
+          <td>{{convertEnToAr(Tamam.year)}} {{Tamam.className}} {{convertEnToAr(Tamam.classNo)}}</td>
           <td>{{Tamam.tamamType}}</td>
           <td><button (click) = "deleteStudentServiceTamam(Tamam.id)" class = "btn btn-danger" >Delete</button></td>
       </tr>

@@ -88,4 +88,13 @@ export class ComponentCommunication{
     sendFalseTamamMsg(message: any){
       this.falseTamam.next(message);
     }
+
+    // send Gez2at to geza2at records
+
+    private geza2at = new BehaviorSubject<any[]>(null);
+    geza2atMsg = this.geza2at.asObservable() ;
+
+    sendGeza2atMsg(message: any[]){
+      this.geza2at.next(message);
+    }
 }

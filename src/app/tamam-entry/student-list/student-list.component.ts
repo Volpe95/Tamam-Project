@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ComponentCommunication } from 'src/app/shared/ComponentCommunication.service';
 import { Student } from 'src/app/shared/student.interface';
+import { utils } from 'src/utils/utils.service';
 import {serverOptions} from '../../shared/server.option';
 import {studentTamam} from '../studentTamam.interface';
 
@@ -19,9 +20,11 @@ export class StudentListComponent implements OnInit , OnDestroy {
 
   curTamamList: studentTamam[] = [];
 
-  constructor(private sendMsg: ComponentCommunication , private http: HttpClient) { }
+  constructor(private sendMsg: ComponentCommunication,
+    private http: HttpClient,
+    private utils: utils) { }
 
-
+  convertEnToAr = this.utils.convertEnToAr;
   ngOnInit(): void {
     this.subscribtion = this.sendMsg.attendanceEntryMsg.subscribe(message => {
         if(!message){

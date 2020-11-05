@@ -1,0 +1,803 @@
+[
+  {
+    ID: 360,
+    name: 'أحمد عبدالله أحمد عبدالله أحمدى',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'A1'
+  },
+  {
+    ID: 21542,
+    name: 'احمد عبدالحكيم عبدالفتاح فيود',
+    year: 5,
+    classCode: 'RP',
+    classNo: 0,
+    sittingCode: 'A2'
+  },
+  {
+    ID: 61011,
+    name: 'احمد اشرف محمد الزغبى البطل',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'A3'
+  },
+  {
+    ID: 21608,
+    name: 'اسلام عصام يوسف حسن محمد',
+    year: 5,
+    classCode: 'RP',
+    classNo: 0,
+    sittingCode: 'A4'
+  },
+  {
+    ID: 61040,
+    name: 'احمد عبدالبديع محمد اسماعيل',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'A5'
+  },
+  {
+    ID: 21918,
+    name: 'محمود مجدى مرزوق عبداللطيف',
+    year: 5,
+    classCode: 'RP',
+    classNo: 0,
+    sittingCode: 'A6'
+  },
+  {
+    ID: 61056,
+    name: 'احمد مانع عبدالسلام قابل',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'A7'
+  },
+  {
+    ID: 22019,
+    name: 'محمود السيد محمد رشاد محمد على',
+    year: 5,
+    classCode: 'RP',
+    classNo: 0,
+    sittingCode: 'A8'
+  },
+  {
+    ID: 61153,
+    name: 'شادى عصام امين احمد',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'A9'
+  },
+  {
+    ID: 20897,
+    name: 'عبدالرحمن محمد عبدالسلام عطوان فراج',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'A10'
+  },
+  {
+    ID: 61157,
+    name: 'عاصم محمد مصطفى عبداللطيف الجعار',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'A11'
+  },
+  {
+    ID: 21111,
+    name: 'عبدالرحمن محمد السيد محمد حسن',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'A12'
+  },
+  {
+    ID: 61172,
+    name: 'عبدالرحمن طارق السعيد حماد على عامر',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'A13'
+  },
+  {
+    ID: 21324,
+    name: 'محمد عيد عبدالعظيم احمد خليل',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'A14'
+  },
+  {
+    ID: 61235,
+    name: 'كريم السيد محمد احمد على سالم',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'A15'
+  },
+  {
+    ID: 21523,
+    name: 'احمد سعيد سيد خليل محمد',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'A16'
+  },
+  {
+    ID: 21576,
+    name: 'احمد محمد محمد عبدالحميد العنانى',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'B1'
+  },
+  {
+    ID: 61252,
+    name: 'مازن احمد محمد الصلى على النبى هاشم',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'B2'
+  },
+  {
+    ID: 21585,
+    name: 'احمد مصطفى البيلى السرجانى',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'B3'
+  },
+  {
+    ID: 61260,
+    name: 'محمد احمد اسماعيل احمد عبدالرحمن',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'B4'
+  },
+  {
+    ID: 21588,
+    name: 'احمد ممدوح ابراهيم عمر على أبوغنيمه',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'B5'
+  },
+  {
+    ID: 61302,
+    name: 'محمد سرور احمد محمد جبر',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'B6'
+  },
+  {
+    ID: 21592,
+    name: 'احمد نبيل نبيل محمد نصر',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'B7'
+  },
+  {
+    ID: 61344,
+    name: 'محمد مصطفى عدلى الخواص',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'B8'
+  },
+  {
+    ID: 21600,
+    name: 'احمد يوسف محمد عماره',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'B9'
+  },
+  {
+    ID: 61394,
+    name: 'مروان ياسر محمد عطيه قحف',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'B10'
+  },
+  {
+    ID: 21604,
+    name: 'اسلام اشرف عبدالعزيز محمد زيدان',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'B11'
+  },
+  {
+    ID: 61412,
+    name: 'مصطفى محمد عبدالعزيز عبدالرحمن محمد',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'B12'
+  },
+  {
+    ID: 21610,
+    name: 'اسلام محمد عبدالحميد دياب خطاب',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'B13'
+  },
+  {
+    ID: 61420,
+    name: 'معاذ عزب الديساوى الحارونى',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'B14'
+  },
+  {
+    ID: 21618,
+    name: 'امجد عبدالله عطوه عبدالحليم عطوه',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'B15'
+  },
+  {
+    ID: 61436,
+    name: 'يوسف اشرف ابراهيم رمضان',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'B16'
+  },
+  {
+    ID: 61440,
+    name: 'يوسف تامر محمد رجاء طلعت',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'C1'
+  },
+  {
+    ID: 21638,
+    name: 'حسن حسنى على محمد سكر',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'C2'
+  },
+  {
+    ID: 61443,
+    name: 'يوسف خالد عبدالله ابراهيم الهابط',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 1,
+    sittingCode: 'C3'
+  },
+  {
+    ID: 21645,
+    name: 'خالد حاتم محمد شعبان',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'C4'
+  },
+  {
+    ID: 361,
+    name: 'حمد سليمان عبدالله حمد عبدالله السنان',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'C5'
+  },
+  {
+    ID: 21702,
+    name: 'عبدالله احمد المندوه حاتم',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'C6'
+  },
+  {
+    ID: 61004,
+    name: 'ابراهيم رمضان رمضان احمد سكر',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'C7'
+  },
+  {
+    ID: 21712,
+    name: 'على احمد على على  حسين',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'C8'
+  },
+  {
+    ID: 61016,
+    name: 'احمد ايهاب محمود عبدالواحد اسكندر',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'C9'
+  },
+  {
+    ID: 21758,
+    name: 'كيرلس جورج ميخائيل مسعد',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'C10'
+  },
+  {
+    ID: 61032,
+    name: 'احمد شوقى عبدالحميد حجازى السيد',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'C11'
+  },
+  {
+    ID: 21766,
+    name: 'محمد ابراهيم سعد مقبول المليجى',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'C12'
+  },
+  {
+    ID: 61041,
+    name: 'احمد عبدالحى ابراهيم محمد الشناوى',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'C13'
+  },
+  {
+    ID: 21796,
+    name: 'محمد السيد ابوسريع متولى',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'C14'
+  },
+  {
+    ID: 61048,
+    name: 'احمد عبدالوهاب عبدالحفيظ محمد مصيلح',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'C15'
+  },
+  {
+    ID: 21804,
+    name: 'محمد أشرف البسطويسى الننى',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'C16'
+  },
+  {
+    ID: 21809,
+    name: 'محمد حازم محمد حسين رزق',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'D1'
+  },
+  {
+    ID: 61057,
+    name: 'احمد مجدى احمد لطفى عبداللطيف',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'D2'
+  },
+  {
+    ID: 21839,
+    name: 'محمد طارق السيد جاب الله',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'D3'
+  },
+  {
+    ID: 61076,
+    name: 'احمد ناجى احمد امين نعمان',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'D4'
+  },
+  {
+    ID: 21866,
+    name: 'محمد عمر معوض  عمر عيسى',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'D5'
+  },
+  {
+    ID: 61119,
+    name: 'حسام محسن محمد عبدالفتاح',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'D6'
+  },
+  {
+    ID: 21872,
+    name: 'محمد مجاهد السيد القطان',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'D7'
+  },
+  {
+    ID: 61183,
+    name: 'عبدالرحمن ياسر جابر ابراهيم',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'D8'
+  },
+  {
+    ID: 21880,
+    name: 'محمد محمود عبدالسميع احمد',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'D9'
+  },
+  {
+    ID: 61196,
+    name: 'عبدالله محمد غريب عبدالعاطى',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'D10'
+  },
+  {
+    ID: 21947,
+    name: 'مصطفى طارق حفظى عبدالحكيم',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'D11'
+  },
+  {
+    ID: 61209,
+    name: 'على محمد عبدالجواد السيد شعبان',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'D12'
+  },
+  {
+    ID: 21954,
+    name: 'مصطفى محسن محمد امين منير',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'D13'
+  },
+  {
+    ID: 61216,
+    name: 'عمر احمد محمد عكه',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'D14'
+  },
+  {
+    ID: 22001,
+    name: 'احمد ابراهيم على اسماعيل محمد',
+    year: 5,
+    classCode: 'RD',
+    classNo: 0,
+    sittingCode: 'D15'
+  },
+  {
+    ID: 61285,
+    name: 'محمد ايمن السيد حسين عيد',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'D16'
+  },
+  {
+    ID: 61289,
+    name: 'محمد حامد عبدالله محمد السيد موسى',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'E1'
+  },
+  {
+    ID: 20394,
+    name: 'احمد شكرى رمضان الجناينى',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'E2'
+  },
+  {
+    ID: 61309,
+    name: 'محمد شريف محمود عفصه',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'E3'
+  },
+  {
+    ID: 21011,
+    name: 'اسلام على محمد عبد العليم',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'E4'
+  },
+  {
+    ID: 61359,
+    name: 'محمود ابراهيم محمود ابراهيم حسن',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'E5'
+  },
+  {
+    ID: 21169,
+    name: 'عمر عبد السلام على عبد السلام على',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'E6'
+  },
+  {
+    ID: 61371,
+    name: 'محمود طارق ابراهيم الشوادفى',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 2,
+    sittingCode: 'E7'
+  },
+  {
+    ID: 21228,
+    name: 'محمد احمد محمد عبد المنعم رمضان',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'E8'
+  },
+  {
+    ID: 61014,
+    name: 'احمد ايمن عبدالله عبدالفتاح',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'E9'
+  },
+  {
+    ID: 21482,
+    name: 'ابراهيم فكرى ابراهيم برهام',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'E10'
+  },
+  {
+    ID: 61027,
+    name: 'احمد رضا عطيه ابراهيم سيد احمد',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'E11'
+  },
+  {
+    ID: 21669,
+    name: 'صلاح السيد محمد طلبه متولى',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'E12'
+  },
+  {
+    ID: 61091,
+    name: 'اسامه عمر محمد محمد امام الخالع',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'E13'
+  },
+  {
+    ID: 21688,
+    name: 'عبدالرحمن ايمن عباده عيسى',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'E14'
+  },
+  {
+    ID: 61103,
+    name: 'انطونيوس نصحى وليم نجيب',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'E15'
+  },
+  {
+    ID: 21703,
+    name: 'عبدالله السيد محمد جمال الدين',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'E16'
+  },
+  {
+    ID: 21764,
+    name: 'محسن على منصور على رزق',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'F1'
+  },
+  {
+    ID: 61122,
+    name: 'حمدى عابد حسن عطيه حسن',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'F2'
+  },
+  {
+    ID: 21781,
+    name: 'محمد احمد محمد خليل',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'F3'
+  },
+  {
+    ID: 61162,
+    name: 'عبدالرحمن احمد عوض  عبدالله عوض',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'F4'
+  },
+  {
+    ID: 21831,
+    name: 'محمد سيف الاسلام اسامه احمد فواد',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'F5'
+  },
+  {
+    ID: 61180,
+    name: 'عبدالرحمن محمد مجدى عبدالرحمن جاب الله',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'F6'
+  },
+  {
+    ID: 21883,
+    name: 'محمد مصطفى عيد على',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'F7'
+  },
+  {
+    ID: 61190,
+    name: 'عبدالله خالد شعبان رزق',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'F8'
+  },
+  {
+    ID: 21887,
+    name: 'محمد هشام صديق السيد مصطفى',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'F9'
+  },
+  {
+    ID: 61230,
+    name: 'فارس ايمن محمد صحصاح',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'F10'
+  },
+  {
+    ID: 21932,
+    name: 'مروان محمد ابراهيم سند',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'F11'
+  },
+  {
+    ID: 61233,
+    name: 'كريم ابراهيم خالد المتولى',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'F12'
+  },
+  {
+    ID: 21953,
+    name: 'مصطفى محب دسوقى عوض الله',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'F13'
+  },
+  {
+    ID: 61267,
+    name: 'محمد احمد غريب على النجدى',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'F14'
+  },
+  {
+    ID: 22007,
+    name: 'اسلام محمد حسن عبده مجد',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'F15'
+  },
+  {
+    ID: 61269,
+    name: 'محمد احمد محمد عبدالخالق ابراهيم',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'F16'
+  },
+  {
+    ID: 61318,
+    name: 'محمد عباس  امين  عباس  خليفه',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'G1'
+  },
+  {
+    ID: 22015,
+    name: 'محمد عبدالكريم صبحى السيد',
+    year: 5,
+    classCode: 'EX',
+    classNo: 0,
+    sittingCode: 'G2'
+  },
+  {
+    ID: 61320,
+    name: 'محمد عبدالفتاح عبدالقادر محمد الاجه',
+    year: 2,
+    classCode: 'ELEC',
+    classNo: 3,
+    sittingCode: 'G3'
+  },
+  {
+    ID: 339,
+    name: 'محمد محمود حسن يتيم',
+    year: 5,
+    classCode: 'EP',
+    classNo: 0,
+    sittingCode: 'G4'
+  },
+  ... 44 more items
+]

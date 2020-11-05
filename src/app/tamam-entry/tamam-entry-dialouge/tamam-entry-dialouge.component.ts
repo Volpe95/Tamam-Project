@@ -9,6 +9,7 @@ import {studentTamam} from '../studentTamam.interface';
 
 import {serverOptions} from '../../shared/server.option';
 import { DateOnlyDataType } from 'sequelize/types';
+import { utils } from 'src/utils/utils.service';
 @Component({
   selector: 'app-tamam-entry-dialouge',
   templateUrl: './tamam-entry-dialouge.component.html',
@@ -31,8 +32,12 @@ export class TamamEntryDialougeComponent implements OnInit {
   curDate : string = null ;
   studentTamamsCurDate: any = [] ;
 
-  constructor(private sendMsg: ComponentCommunication , private communication: Communication , private http: HttpClient) { }
+  constructor(private sendMsg: ComponentCommunication,
+      private communication: Communication,
+      private http: HttpClient,
+      private utils: utils) { }
 
+  convertEnToAr = this.utils.convertEnToAr;
   ngOnInit(): void {
     this.initializeButtons() ;
   }

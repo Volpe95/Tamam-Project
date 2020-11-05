@@ -15,7 +15,7 @@
             <td>{{i + 1}}</td>
             <td>{{record.studentID}}</td>
             <td>{{record.studentName}}</td>
-            <td>{{record.year}} {{record.className}} {{record.classNo}}</td>
+            <td>{{convertEnToAr(record.year)}} {{record.className}} {{convertEnToAr(record.classNo)}}</td>
             <td>{{record.subjectName}} ({{record.subjectCode}})</td>
             <td>{{record.percentage}}%</td>
         </tr>

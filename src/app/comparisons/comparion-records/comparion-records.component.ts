@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ComponentCommunication } from 'src/app/shared/ComponentCommunication.service';
+import { utils } from 'src/utils/utils.service';
 
 @Component({
   selector: 'app-comparion-records',
@@ -12,8 +13,10 @@ export class ComparionRecordsComponent implements OnInit {
   subscription : Subscription;
   falseTamams : any[] = [] ;
 
-  constructor(private sendMsg: ComponentCommunication) { }
+  constructor(private sendMsg: ComponentCommunication,
+    private utils: utils) { }
 
+   convertEnToAr = this.utils.convertEnToAr;
    attributesNames = [
     'firstLectureTamam',
     'secondLectureTamam',

@@ -1,7 +1,7 @@
 
 <div class = "container">
   <br>
-  <form (submit)  = "onSubmit()" class = "inline" #Geza2atForm = "ngForm">
+  <form  class = "inline" #Geza2atForm = "ngForm">
 
     <div class = "row">
       <div class = "form-group col-xs-2">
@@ -28,7 +28,7 @@
 
       <div class = "form-group col-xs-2">
         <label for = "studentID">Student ID</label>
-        <input #StudentID (keyup.enter) = "onChangeStudentID(StudentID.value)" type = "number" class = "form-control" ngModel name = "studentID" required>
+        <input #StudentID (change) = "onChangeStudentID(StudentID.value)" type = "number" class = "form-control" ngModel name = "studentID" required>
       </div>
 
     </div>
@@ -60,10 +60,10 @@
 
       <div class = "form-group col-xs-4">
 
-        <label for = "studentCrime">Crime</label>
-        <select class = "form-control" name = "crimeName" ngModel required>
+        <label for = "crimeArrayIndex">Crime</label>
+        <select class = "form-control" name = "crimeArrayIndex" ngModel required>
           <option></option>
-          <option  *ngFor = "let crime of crimes">
+          <option  *ngFor = "let crime of crimes; index as i" [value] = "i">
             {{crime.crimeName}}
           </option>
         </select>
@@ -72,10 +72,10 @@
 
       <div *ngIf = "!punishmentType" class = "form-group col-xs-4">
         <div name = "ifNormal">
-          <label for = "studentGeza2">Punishment</label>
-          <select class = "form-control" name = "geza2Name" ngModel required>
+          <label for = "geza2ArrayIndex">Punishment</label>
+          <select class = "form-control" name = "geza2ArrayIndex" ngModel required>
             <option></option>
-            <option  *ngFor = "let punishment of punishments">
+            <option  *ngFor = "let punishment of punishments; index as i" [value] = "i">
               {{punishment.geza2Name}}
             </option>
             </select>
@@ -85,8 +85,8 @@
 
       <div  class = "form-group col-xs-4" *ngIf = "punishmentType">
         <div name = "ifPoints">
-          <label for = "studentGeza2">Points</label>
-          <input name = "studentGeza2" class = "form-control" ngModel type = 'number' [value] = '' readonly/>
+          <label for = "geza2Points">Points</label>
+          <input  name = "geza2Points" class = "form-control" ngModel type = 'number'  required/>
         </div>
       </div>
 
@@ -99,14 +99,20 @@
         <select #Rank (change) = "onChangeOfficerRank(Rank.value)"class = "form-control" name = "officerRank" ngModel required>
           <option>لواء</option>
           <option>عميد</option>
+          <option>عقيد</option>
+          <option>مقدم</option>
+          <option>رائد</option>
+          <option>نقيب</option>
+          <option>ملازم اول</option>
+          <option>ملازم</option>
         </select>
       </div>
 
       <div class = "form-group col-xs-4">
-        <label for = "officerName">Officer Name</label>
-        <select class = "form-control" name = "officerName" ngModel required>
+        <label for = "officerArrayIndex">Officer Name</label>
+        <select class = "form-control" name = "officerArrayIndex" ngModel required>
           <option></option>
-          <option *ngFor = "let officer of filteredOfficers">
+          <option *ngFor = "let officer of filteredOfficers; index as i" [value] = "i">
             {{officer.officerName}}
           </option>
         </select>
@@ -114,9 +120,13 @@
 
     </div>
 
-    <div align = "right">
-      <button action = "submit" class = "btn btn-success" align = "right" style = "width: 100px; height:40px;">ADD</button>
-    </div>
 
   </form>
+  <div align = "right">
+    <button (click)  = "onSubmit()" type = "submit" class = "btn btn-success" align = "right" style = "width: 100px; height:40px;">ADD</button>
+  </div>
+
 </div>
+
+
+<app-geza2at-records></app-geza2at-records>

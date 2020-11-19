@@ -146,7 +146,7 @@ export class TimeTableEntryComponent implements OnInit {
     });
 
     this.allSubjects.forEach(subject => {
-      if(subject.classCode == classCode){
+      if(subject.classCode == classCode && this.classes[0].year != null && subject.year == this.classes[0].year){
         this.subjects.push(subject);
       }
     });

@@ -7,9 +7,12 @@ const fs = require('fs');
 const { connect } = require('http2');
 const { where , DATEONLY, CHAR } = require('sequelize');
 
-const Student = require('./models/Student');
+const TermSchedule = require('./models/TermSchedule');
 
 
+//sequelize.sync({alter: true});
+
+/*
 var examHall = [] ;
 for(let i = 0 ; i <= 10; i++){
   examHall[i] = [] ;
@@ -102,3 +105,4 @@ Student.findAll({where: {year: [2 , 5] , classCode: ['ELEC' , 'RD' , 'EP' , 'CW'
 .catch(err => {
   console.log(err);
 })
+*/

@@ -14,7 +14,8 @@ import { ComponentCommunication } from "../shared/ComponentCommunication.service
 export class CalculatePercentagesComponent implements OnInit {
   @ViewChild('PercentageForm') PercentageForm: NgForm ;
 
-  constructor(private snedMsg: ComponentCommunication) { }
+  constructor(private sendMsg: ComponentCommunication) { }
+
 
   ngOnInit(): void {
 
@@ -33,9 +34,12 @@ export class CalculatePercentagesComponent implements OnInit {
     }
     //console.log(this.PercentageForm) ; Debug :)
 
-    this.snedMsg.SendCalculatePercentageMsg({ // data are fine send them to percentage records component
+    this.sendMsg.SendCalculatePercentageMsg({ // data are fine send them to percentage records component
       year: this.PercentageForm.value.year ,
       percentage:  this.PercentageForm.value.percentage
       });
   }
+
+
+
 }

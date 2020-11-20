@@ -113,7 +113,9 @@ app.get('/calculatePercentage', (req, res) => {
   var subjectTotalHours , structuredTimeTable;
   var students = {}; // [studentID] = {...Info}
   var subjects = {};  // [SubjectCode] =  Subject name
-  TermSchedule.findAndCountAll({ raw: true })
+  TermSchedule.findAndCountAll({
+     //where: {year: query.year},
+     raw: true })
     .then(result => {
       semesterNumberOfWeeks = result.count;
       semseterWeeks = result.rows;
@@ -150,16 +152,20 @@ app.get('/calculatePercentage', (req, res) => {
     .then(result => {
 
       studentsAbsenceHours = {};
+
       TamamPropertiesNames = [
         'firstLectureTamam',
         'secondLectureTamam',
         'thirdLectureTamam',
         'fourthLectureTamam',
-        'fifthLectureTamam'];
+        'fifthLectureTamam'
+      ];
+
       for (let i = 0; i < result.length; i++) {
         var Class = mergeClassInfo(result[i].year,
           result[i].classCode,
-          result[i].classNo);
+          result[i].classNo
+          );
 
         var studentID = result[i].studentID;
         var date = new Date(result[i].date);
@@ -184,6 +190,9 @@ app.get('/calculatePercentage', (req, res) => {
           if(result[i][TamamPropertiesNames[j]] != '---'){
             Tamams.push(j + 1);
             var tmp = structuredTimeTable[Class][day][j + 1];
+            if(!tmp){
+              continue;
+            }
             if(tmp.even != '' && WeekType == 0){
               studentSubjects.push(tmp.even);
             }

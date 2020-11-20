@@ -15,10 +15,14 @@
             <td>{{i + 1}}</td>
             <td>{{record.studentID}}</td>
             <td>{{record.studentName}}</td>
-            <td>{{convertEnToAr(record.year)}} {{record.className}} {{convertEnToAr(record.classNo)}}</td>
+            <td>{{convertEnToAr(this.sendPercentageInfo.year)}} {{record.className}} {{convertEnToAr(record.classNo)}}</td>
             <td>{{record.subjectName}} ({{record.subjectCode}})</td>
             <td>{{record.percentage}}%</td>
         </tr>
         <tbody>
     </table>
+</div>
+
+<div *ngIf = "percentageRecords.length != 0" align = "center">
+  <button (click) = "printResults()" class = "btn btn-success">Print Results!</button>
 </div>

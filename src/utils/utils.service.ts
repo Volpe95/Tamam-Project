@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 
 export class utils{
   convertEnToAr(englishNumberAsString: any){
-    if(!englishNumberAsString){
+    if(!englishNumberAsString && englishNumberAsString != 0){
       return null ;
     }
     var ret = "" ;

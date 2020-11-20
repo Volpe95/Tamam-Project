@@ -79,18 +79,20 @@ export class ComparionRecordsComponent implements OnInit {
       {text: 'الرابعة المحاضرة' , alignment: 'center'},
       {text: 'الخامسة المحاضرة' , alignment: 'center'},
       {text: 'الطلبة لواء تمام' , alignment: 'center'},
-      {text: 'المحاضرات غياب عدد' , alignment: 'center'},
+      {text: 'العدد' , alignment: 'center'},
     ];
     var title = this.reverseString('تخلفات الطلبة بالمحاضرات بتاريخ ' + this.convertEnToAr(this.falseTamams[0]['date']).split('').reverse().join(''));
     var dd = {
-      pageMargins: 10,
+      pageMargins: 20,
+
       pageOrientation: 'landscape',
       content: [
           { text: title , style: 'header' , alignment: 'center'},
           this.table(this.falseTamams , headersInArabic),
       ],
       defaultStyle: {
-        font: 'Amiri'
+        font: 'Amiri',
+        fontSize: 11,
       }
 
     }

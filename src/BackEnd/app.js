@@ -293,7 +293,8 @@ function getEachSubjectTotalHours(timeTableValues, semesterWeeks) {
 
     var Class = mergeClassInfo(timeTableValues[i].year,
       timeTableValues[i].classCode,
-      timeTableValues[i].classNo);
+      timeTableValues[i].classNo
+    );
 
     if (!subjectTotalHours[Class]) {
       subjectTotalHours[Class] = {};

@@ -39,6 +39,9 @@ export class Geza2atComponent implements OnInit {
         return ;
       }
       this.crimes = response.body;
+      this.crimes.sort(function(a , b){
+          return a.crimeName > b.crimeName ? 1 : -1 ;
+      });
       console.log(response.body);
     });
 
@@ -52,6 +55,9 @@ export class Geza2atComponent implements OnInit {
         return ;
       }
       this.punishments = response.body;
+      this.punishments.sort(function(a , b){
+        return a.geza2Name > b.geza2Name? 1 : -1 ;
+      });
       console.log(response.body);
     });
 
@@ -224,6 +230,9 @@ export class Geza2atComponent implements OnInit {
         return ;
       }
       this.filteredOfficers = response.body;
+      this.filteredOfficers.sort(function(a , b) {
+        return a.officerName > b.officerName ? 1 : -1 ;
+      });
       console.log(this.filteredOfficers);
       console.log(this.geza2atForm.value);
     });

@@ -10,7 +10,7 @@ const { where , DATEONLY, CHAR } = require('sequelize');
 const TermSchedule = require('./models/TermSchedule');
 
 
-//sequelize.sync({alter: true});
+//sequelize.sync({force: true});
 
 /*
 var examHall = [] ;
